@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/EmailNotificationWebHook/">
+    <Project Path="EmailNotificationWebHook/EmailNotification.WebHook/EmailNotification.WebHook.csproj" />
+  </Folder>
+  <Folder Name="/OrderAPI/">
+    <Project Path="OrderAPI/Order.API/Order.API.csproj" />
+  </Folder>
+  <Folder Name="/ProductAPI/">
+    <Project Path="ProductAPI/Product.API/Product.API.csproj" />
+  </Folder>
+</Solution>
