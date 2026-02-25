@@ -1,28 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+		<PackageReference Include="MassTransit" Version="9.0.1" />
+		<PackageReference Include="MassTransit.RabbitMQ" Version="9.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.3">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="AttackPrevention\CSRF\" />
-    <Folder Include="AttackPrevention\CORS\" />
-    <Folder Include="AttackPrevention\RateLimitForDDoS\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="DataLayer\" />
-    <Folder Include="Models\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Mapper\" />
-    <Folder Include="GlobalException\" />
-    <Folder Include="Logs\" />
-    <Folder Include="Version\" />
-    <Folder Include="ServerSideValidation\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="AttackPrevention\CSRF\" />
+		<Folder Include="AttackPrevention\CORS\" />
+		<Folder Include="AttackPrevention\RateLimitForDDoS\" />
+		<Folder Include="Controllers\" />
+		<Folder Include="DataLayer\" />
+		<Folder Include="Models\" />
+		<Folder Include="DTOs\" />
+		<Folder Include="Mapper\" />
+		<Folder Include="GlobalException\" />
+		<Folder Include="Logs\" />
+		<Folder Include="Version\" />
+		<Folder Include="ServerSideValidation\" />
+	</ItemGroup>
 
 </Project>
