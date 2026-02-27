@@ -1,0 +1,18 @@
+[2026-02-27 07:38:26.101 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-02-27 07:38:26.651 +05:30] [FTL] [Product.API] Product.API failed to start.
+System.Exception: Product.API failed to start.
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Program.cs:line 37
+ 
+[2026-02-27 07:39:23.880 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-02-27 07:39:24.582 +05:30] [FTL] [Product.API] Product.API failed to start.
+System.Exception: Product.API failed to start.
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Program.cs:line 37
+ 
+[2026-02-27 08:01:43.476 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-02-27 08:01:43.976 +05:30] [FTL] [Product.API] Product.API failed to start.
+System.Exception: Product.API failed to start.
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Program.cs:line 27
+ 

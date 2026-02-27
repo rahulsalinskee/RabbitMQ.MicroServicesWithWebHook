@@ -12,6 +12,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+
+    app.UseSwaggerUI(option =>
+    {
+        option.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "Order API");
+    });
 }
 
 app.UseHttpsRedirection();

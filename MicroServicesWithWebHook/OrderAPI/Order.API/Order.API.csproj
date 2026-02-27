@@ -19,6 +19,7 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -27,13 +28,16 @@
 		<Folder Include="AttackPrevention\RateLimitForDDoS\" />
 		<Folder Include="Controllers\" />
 		<Folder Include="DataLayer\" />
-		<Folder Include="Models\" />
-		<Folder Include="DTOs\" />
-		<Folder Include="Mapper\" />
 		<Folder Include="GlobalException\" />
 		<Folder Include="Logs\" />
+		<Folder Include="Repository\Implementations\" />
+		<Folder Include="Repository\Services\" />
 		<Folder Include="Version\" />
 		<Folder Include="ServerSideValidation\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\SharedData\Shared.Data\Shared.Data.csproj" />
 	</ItemGroup>
 
 </Project>

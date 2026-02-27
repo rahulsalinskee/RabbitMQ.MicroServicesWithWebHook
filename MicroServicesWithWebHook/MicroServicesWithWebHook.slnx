@@ -8,4 +8,7 @@
   <Folder Name="/ProductAPI/">
     <Project Path="ProductAPI/Product.API/Product.API.csproj" />
   </Folder>
+  <Folder Name="/SharedData/">
+    <Project Path="SharedData/Shared.Data/Shared.Data.csproj" />
+  </Folder>
 </Solution>

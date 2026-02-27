@@ -1,0 +1,24 @@
+[2026-02-27 07:31:09.497 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-02-27 07:31:11.992 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-02-27 07:31:11.999 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-02-27 07:31:12.064 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-02-27 07:31:12.066 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-02-27 07:31:12.068 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-02-27 07:32:07.681 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-02-27 07:32:08.115 +05:30] [FTL] [Product.API] Product.API failed to start.
+System.Exception: Product.API failed to start.
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Program.cs:line 37
+ 
+[2026-02-27 07:32:15.035 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-02-27 07:32:15.570 +05:30] [FTL] [Product.API] Product.API failed to start.
+System.Exception: Product.API failed to start.
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Program.cs:line 37
+ 
