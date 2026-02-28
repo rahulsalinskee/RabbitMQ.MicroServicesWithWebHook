@@ -1,6 +1,9 @@
+using Product.API.AttackPrevention.RateLimitForDDoS;
 using Product.API.DataLayer;
+using Product.API.Exception;
 using Product.API.LogConfiguration;
 using Serilog;
+using System.Runtime.CompilerServices;
 
 // Initialize logger first to capture startup errors
 Log.Logger = ProductLog.GenerateProductLog();
@@ -23,6 +26,9 @@ try
     // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
     builder.Services.AddOpenApi();
 
+    /* Register Rate Limiting Services */
+    builder.Services.AddRateLimitingServicesExtension();
+
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
@@ -34,8 +40,17 @@ try
             option.SwaggerEndpoint(url: "/openapi/v1.json", name: "Product API V1");
         });
     }
+
+    app.UseMiddleware<GlobalExceptionHandler>();
     app.UseHttpsRedirection();
     app.UseSerilogRequestLogging(); // Logs HTTP requests automatically
+
+    /* --- Enable Rate Limiting Middleware : START --- */
+    /* Place this AFTER HttpsRedirection but BEFORE Authorization/Controllers */
+    app.UseRateLimiter();
+    /* --- Enable Rate Limiting Middleware : END --- */
+
+
     app.UseAuthorization();
     app.MapControllers();
     app.Run();

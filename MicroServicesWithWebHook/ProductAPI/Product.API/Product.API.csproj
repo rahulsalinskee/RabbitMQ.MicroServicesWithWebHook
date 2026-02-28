@@ -28,11 +28,8 @@
   <ItemGroup>
     <Folder Include="AttackPrevention\CORS\" />
     <Folder Include="AttackPrevention\CSRF\" />
-    <Folder Include="AttackPrevention\RateLimitForDDoS\" />
     <Folder Include="Controllers\" />
-    <Folder Include="GlobalException\" />
     <Folder Include="Repository\Implementations\" />
-    <Folder Include="ServerSideValidation\" />
     <Folder Include="Version\" />
   </ItemGroup>
 

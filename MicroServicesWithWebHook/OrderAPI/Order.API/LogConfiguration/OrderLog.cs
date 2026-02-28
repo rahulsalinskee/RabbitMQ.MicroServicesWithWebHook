@@ -2,28 +2,28 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace Product.API.LogConfiguration
+namespace Order.API.LogConfiguration
 {
-    public static class ProductLog
+    public class OrderLog
     {
         private const string LOG_CONFIGURATION_FOLDER = "LogConfiguration";
         private const string LOG_DIRECTORY_NAME = "Logs";
-        private const string PRODUCT_LOG_DIRECTORY = "ProductLog";
-        private const string PRODUCT_LOG_FILE_NAME = "ProductLog-.txt";
-        private const string PRODUCT_PROJECT_NAME = "Product.API";
+        private const string ORDER_LOG_DIRECTORY = "OrderLog";
+        private const string ORDER_LOG_FILE_NAME = "OrderLog-.txt";
+        private const string ORDER_PROJECT_NAME = "Order.API";
 
-        public static Serilog.ILogger GenerateProductLog()
+        public static Serilog.ILogger GenerateOrderLog()
         {
-            var logFilePathForProductApi = GetFilePath(logApiDirName: PRODUCT_LOG_DIRECTORY, logFileName: PRODUCT_LOG_FILE_NAME);
-            return CreateLog(logPath: logFilePathForProductApi, projectName: PRODUCT_PROJECT_NAME);
+            var logFilePathForOrderApi = GetFilePath(logApiDirName: ORDER_LOG_DIRECTORY, logFileName: ORDER_LOG_FILE_NAME);
+            return CreateLog(logPath: logFilePathForOrderApi, projectName: ORDER_PROJECT_NAME);
         }
 
         private static string GetFilePath(string logApiDirName, string logFileName)
         {
-            /* Goes up 3 levels: net10.0 -> Debug -> bin -> reaches Product.API root */
+            /* Goes up 3 levels: net10.0 -> Debug -> bin -> reaches Order.API root */
             var projectRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", ".."));
 
-            /* Builds path: Product.API/LogConfiguration/Logs/ProductLog/ */
+            /* Builds path: Order.API/LogConfiguration/Logs/OrderLog/ */
             var logDirectory = Path.Combine(projectRoot, LOG_CONFIGURATION_FOLDER, LOG_DIRECTORY_NAME, logApiDirName);
             Directory.CreateDirectory(logDirectory);
 

@@ -16,3 +16,9 @@ System.Exception: Product.API failed to start.
 System.Exception: Product.API failed to start.
    at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Program.cs:line 27
  
+[2026-02-27 19:33:05.443 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-02-27 19:33:10.008 +05:30] [FTL] [Product.API] Product.API failed to start.
+System.Exception: Simulated startup exception for testing global error handling.
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Program.cs:line 38
+ 

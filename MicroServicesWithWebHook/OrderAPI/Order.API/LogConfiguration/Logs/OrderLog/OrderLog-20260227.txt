@@ -1,0 +1,52 @@
+[2026-02-27 21:56:29.725 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-02-27 21:56:30.063 +05:30] [FTL] [Order.API] Product.API failed to start.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API\Program.cs:line 27
+ 
+[2026-02-27 21:58:04.120 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-02-27 21:58:04.252 +05:30] [FTL] [Order.API] Product.API failed to start.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API\Program.cs:line 27
+ 
+[2026-02-27 22:02:29.912 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-02-27 22:02:30.064 +05:30] [FTL] [Order.API] Order.API failed to start.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API\Program.cs:line 27
+ 
+[2026-02-27 22:09:40.609 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-02-27 22:09:40.741 +05:30] [FTL] [Order.API] Order.API failed to start.
+Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API\Program.cs:line 27
+ 
+[2026-02-27 22:27:08.809 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-02-27 22:30:27.090 +05:30] [INF] [Order.API] Starting Order.API...
+ 
