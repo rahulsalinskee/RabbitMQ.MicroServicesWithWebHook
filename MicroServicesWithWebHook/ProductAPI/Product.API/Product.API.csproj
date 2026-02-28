@@ -26,8 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="AttackPrevention\CORS\" />
-    <Folder Include="AttackPrevention\CSRF\" />
     <Folder Include="Controllers\" />
     <Folder Include="Repository\Implementations\" />
     <Folder Include="Version\" />

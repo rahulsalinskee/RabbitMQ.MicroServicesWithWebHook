@@ -1,0 +1,12 @@
+[2026-02-28 13:44:45.730 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-02-28 13:44:47.753 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-02-28 13:44:47.760 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-02-28 13:44:47.803 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-02-28 13:44:47.805 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-02-28 13:44:47.807 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 

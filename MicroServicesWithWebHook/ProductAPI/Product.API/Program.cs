@@ -1,3 +1,5 @@
+using Product.API.AttackPrevention.CORS;
+using Product.API.AttackPrevention.CSRF;
 using Product.API.AttackPrevention.RateLimitForDDoS;
 using Product.API.DataLayer;
 using Product.API.Exception;
@@ -29,6 +31,13 @@ try
     /* Register Rate Limiting Services */
     builder.Services.AddRateLimitingServicesExtension();
 
+    /* --- AntiForgery START: Configure Services For CSRF Attack Prevention --- */
+    builder.Services.AddAppAntiForgeryExtension();
+
+    /* -- CORS START: Service Registration */
+    builder.Services.AddCorsServicesExtension(builder.Configuration);
+    /* -- CORS STOP: Service Registration */
+
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
@@ -45,11 +54,20 @@ try
     app.UseHttpsRedirection();
     app.UseSerilogRequestLogging(); // Logs HTTP requests automatically
 
-    /* --- Enable Rate Limiting Middleware : START --- */
+    /* --- CORS Middleware START --- */
+    /* Must be between UseRouting and UseRateLimiter/UseAuthorization */
+    app.UseCorsMiddlewareExtension();
+    /* --- CORS Middleware END --- */
+
+
+    /* --- AntiForgery MiddleWare START --- */
+    /* This MiddleWare provides the token to the client via a cookie */
+    app.UseAntiForgeryTokenMiddlewareExtension();
+
+    /* --- Enable Rate Limiting MiddleWare : START --- */
     /* Place this AFTER HttpsRedirection but BEFORE Authorization/Controllers */
     app.UseRateLimiter();
-    /* --- Enable Rate Limiting Middleware : END --- */
-
+    /* --- Enable Rate Limiting MiddleWare : END --- */
 
     app.UseAuthorization();
     app.MapControllers();
