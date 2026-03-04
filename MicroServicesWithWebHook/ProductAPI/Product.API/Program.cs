@@ -4,6 +4,8 @@ using Product.API.AttackPrevention.RateLimitForDDoS;
 using Product.API.DataLayer;
 using Product.API.Exception;
 using Product.API.LogConfiguration;
+using Product.API.Repository.Version1.Implementations;
+using Product.API.Repository.Version1.Services;
 using Serilog;
 using System.Runtime.CompilerServices;
 
@@ -38,6 +40,9 @@ try
     builder.Services.AddCorsServicesExtension(builder.Configuration);
     /* -- CORS STOP: Service Registration */
 
+    /* --- Register ProductService --- */
+    builder.Services.AddScoped<IProductService, ProductServiceImplementation>();
+
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
@@ -46,7 +51,7 @@ try
         app.MapOpenApi();
         app.UseSwaggerUI(option =>
         {
-            option.SwaggerEndpoint(url: "/openapi/v1.json", name: "Product API V1");
+            option.SwaggerEndpoint(url: "/openapi/v1.json", name: "Product API");
         });
     }
 

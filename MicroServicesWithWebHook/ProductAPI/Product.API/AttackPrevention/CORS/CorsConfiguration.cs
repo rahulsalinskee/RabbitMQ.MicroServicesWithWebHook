@@ -13,11 +13,18 @@
             {
                 option.AddPolicy(name: CORS_POLICY_NAME, policy =>
                 {
-                    policy.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod();
                     /* 
                     *  Note: If we allow Any Origin (*), we cannot use .AllowCredentials(). 
                     *  If we need cookies/auth, specify exact origins and use .AllowCredentials() 
                     */
+                    if (allowedOrigins.Contains("*"))
+                    {
+                        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                    }
+                    else
+                    {
+                        policy.WithOrigins(allowedOrigins).AllowAnyHeader().AllowAnyMethod();
+                    }
                 });
             });
         }

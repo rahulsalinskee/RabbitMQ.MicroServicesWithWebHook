@@ -26,9 +26,9 @@ namespace Product.API.AttackPrevention.RateLimitForDDoS
                         partitionKey: remoteIp,
                         factory: partition => new FixedWindowRateLimiterOptions()
                         {
-                            /* Logic: Allow 1 request per 1 minute per IP (Global Default) */
+                            /* Logic: Allow 10 request per 1 minute per IP (Global Default) */
                             AutoReplenishment = true,
-                            PermitLimit = 1,
+                            PermitLimit = 10,
                             Window = TimeSpan.FromMinutes(1),
                             QueueLimit = 0
                         }
@@ -43,7 +43,7 @@ namespace Product.API.AttackPrevention.RateLimitForDDoS
                     var remoteIp = context.Connection.RemoteIpAddress?.ToString() ?? "unknown";
                     return RateLimitPartition.GetFixedWindowLimiter(remoteIp, _ => new FixedWindowRateLimiterOptions
                     {
-                        PermitLimit = 5, // Only 5 creates allowed
+                        PermitLimit = 9, // Only 9 creates allowed
                         Window = TimeSpan.FromMinutes(1), // per minute
                         QueueLimit = 0
                     });
@@ -65,7 +65,7 @@ namespace Product.API.AttackPrevention.RateLimitForDDoS
                         IsSuccess = false,
                         Result = null,
                         Message = applicationError.Message,
-                        WhenErrorOccured = applicationError.When,
+                        When = applicationError.When,
                     };
                     await context.HttpContext.Response.WriteAsJsonAsync(responseDto, token);
                 };

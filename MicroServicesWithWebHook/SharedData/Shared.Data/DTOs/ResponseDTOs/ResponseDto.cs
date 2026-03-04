@@ -8,6 +8,6 @@
 
         public string Message { get; set; } = string.Empty;
 
-        public DateTime WhenErrorOccured { get; set; } = DateTime.Now;
+        public DateTime When { get; set; }
     }
 }

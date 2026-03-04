@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Shared.Data.DTOs.ProductDTOs
+namespace Shared.Data.DTOs.ProductDTOs.Version1
 {
     public class ProductDto
     {

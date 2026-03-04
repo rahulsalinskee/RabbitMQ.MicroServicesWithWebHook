@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Mapper\OrderMapper\" />
-    <Folder Include="Mapper\ProductMapper\" />
   </ItemGroup>
 
 </Project>
