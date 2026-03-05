@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Product.API.Repository.Version1.Services;
+using Product.API.Repository.Version2.Services;
 using Product.API.ServerSideValidation;
-using Shared.Data.DTOs.ProductDTOs.Version1;
+using Shared.Data.DTOs.ProductDTOs.Version2;
 
-namespace Product.API.Controllers
+namespace Product.API.Controllers.Version2
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
+    [ApiVersion("2.0")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -20,8 +20,10 @@ namespace Product.API.Controllers
             this._logger = logger;
         }
 
+        #region Version 2
         [HttpGet]
-        public async Task<IActionResult> GetAllProducts()
+        [MapToApiVersion("2.0")]
+        public async Task<IActionResult> GetAllProductsVersion2()
         {
             var response = await this._productService.GetAllProductsAsync();
 
@@ -35,7 +37,8 @@ namespace Product.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProductById(int id)
+        [MapToApiVersion("2.0")]
+        public async Task<IActionResult> GetProductByIdVersion2(int id)
         {
             var response = await this._productService.GetProductByIdAsync(id);
 
@@ -51,8 +54,9 @@ namespace Product.API.Controllers
         [HttpPost]
         [ModelValidation]
         //[ValidateAntiForgeryToken]
+        [MapToApiVersion("2.0")]
         [EnableRateLimiting(policyName: "StrictPolicy")]
-        public async Task<IActionResult> CreateProduct([FromBody] AddProductDto addProductDto)
+        public async Task<IActionResult> CreateProductVersion2([FromBody] AddProductDto addProductDto)
         {
             var response = await this._productService.AddProductAsync(addProductDto);
 
@@ -68,8 +72,9 @@ namespace Product.API.Controllers
         [HttpPut("{id:int}")]
         [ModelValidation]
         //[ValidateAntiForgeryToken]
+        [MapToApiVersion("2.0")]
         [EnableRateLimiting(policyName: "StrictPolicy")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpdateProductDto updateProductDto)
+        public async Task<IActionResult> UpdateProductVersion2(int id, [FromBody] UpdateProductDto updateProductDto)
         {
             var response = await this._productService.UpdateProductByIdAsync(id, updateProductDto);
 
@@ -84,8 +89,9 @@ namespace Product.API.Controllers
 
         [HttpDelete("{id:int}")]
         //[ValidateAntiForgeryToken]
+        [MapToApiVersion("2.0")]
         [EnableRateLimiting(policyName: "StrictPolicy")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteProductVersion2(int id)
         {
             var response = await this._productService.DeleteProductByIdAsync(id);
 
@@ -97,5 +103,6 @@ namespace Product.API.Controllers
             this._logger.LogError("Failed to delete product: {Message}", response.Message);
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
+        #endregion
     }
 }

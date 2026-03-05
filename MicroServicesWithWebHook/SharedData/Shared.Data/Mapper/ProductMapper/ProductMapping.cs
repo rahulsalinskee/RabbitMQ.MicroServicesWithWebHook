@@ -14,7 +14,6 @@ namespace Shared.Data.Mapper.ProductMapper
         {
             return new DTOs.ProductDTOs.Version1.ProductDto()
             {
-                ID = Product.ID,
                 Name = Product.Name,
                 Price = Product.Price,
             };
@@ -29,7 +28,6 @@ namespace Shared.Data.Mapper.ProductMapper
         {
             return new Product()
             {
-                ID = ProductDto.ID,
                 Name = ProductDto.Name,
                 Price = ProductDto.Price,
             };
@@ -46,7 +44,6 @@ namespace Shared.Data.Mapper.ProductMapper
         {
             return new DTOs.ProductDTOs.Version2.ProductDto()
             {
-                ID = Product.ID,
                 Name = Product.Name,
                 CostPrice = Product.Price,
             };
@@ -61,7 +58,6 @@ namespace Shared.Data.Mapper.ProductMapper
         {
             return new Product()
             {
-                ID = ProductDto.ID,
                 Name = ProductDto.Name,
                 Price = ProductDto.CostPrice,
             };
