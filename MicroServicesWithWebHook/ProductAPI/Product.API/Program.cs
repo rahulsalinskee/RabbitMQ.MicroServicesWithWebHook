@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Product.API.AttackPrevention.CORS;
 using Product.API.AttackPrevention.CSRF;
 using Product.API.AttackPrevention.RateLimitForDDoS;
+using Product.API.Cache.ConfigurationCache;
+using Product.API.Cache.Repository.Implementations;
+using Product.API.Cache.Repository.Services;
 using Product.API.DataLayer;
 using Product.API.Exception;
 using Product.API.LogConfiguration;
@@ -22,6 +25,9 @@ try
 
     /* Register ProductDbContext */
     builder.Services.RegisterProductDbContextExtension(configuration: builder.Configuration);
+
+    /* Register Cache */
+    builder.Services.ConfigureCacheExtension(configuration: builder.Configuration);
 
     // Add services to the container.
     builder.Services.AddControllers();
@@ -47,6 +53,9 @@ try
     /* --- Register Product Services & Implementations --- */
     builder.Services.AddScoped<Product.API.Repository.Version1.Services.IProductService, Product.API.Repository.Version1.Implementations.ProductServiceImplementation>();
     builder.Services.AddScoped<Product.API.Repository.Version2.Services.IProductService, Product.API.Repository.Version2.Implementations.ProductServiceImplementation>();
+
+    /* --- Register Cache Services & Implementations --- */
+    builder.Services.AddScoped<ICacheService, CacheServiceImplementation>();
 
     var app = builder.Build();
 
