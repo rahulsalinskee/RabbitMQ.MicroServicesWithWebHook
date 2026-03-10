@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/APIGateway/">
+    <Project Path="APIGateway/API.Gateway/API.Gateway.csproj" Id="054388e2-8a45-4bb8-8b81-1d0d3864b38a" />
+  </Folder>
   <Folder Name="/EmailNotificationWebHook/">
     <Project Path="EmailNotificationWebHook/EmailNotification.WebHook/EmailNotification.WebHook.csproj" />
   </Folder>
