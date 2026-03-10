@@ -10,12 +10,13 @@ namespace Shared.Data.Mapper.ProductMapper
         /// </summary>
         /// <param name="Product">The product.</param>
         /// <returns></returns>
-        public static DTOs.ProductDTOs.Version1.ProductDto ConvertProductToProductDtoExtensionVersion1(this Product Product)
+        public static DTOs.ProductDTOs.Version1.ProductDto ConvertProductToProductDtoExtensionVersion1(this Product product)
         {
             return new DTOs.ProductDTOs.Version1.ProductDto()
             {
-                Name = Product.Name,
-                Price = Product.Price,
+                ID = product.ID,
+                Name = product.Name,
+                Price = product.Price,
             };
         }
 
@@ -24,12 +25,12 @@ namespace Shared.Data.Mapper.ProductMapper
         /// </summary>
         /// <param name="ProductDto">The product dto.</param>
         /// <returns></returns>
-        public static Product ConvertProductDtoToProductExtensionVersion1(this DTOs.ProductDTOs.Version1.ProductDto ProductDto)
+        public static Product ConvertProductDtoToProductExtensionVersion1(this DTOs.ProductDTOs.Version1.ProductDto productDto)
         {
             return new Product()
             {
-                Name = ProductDto.Name,
-                Price = ProductDto.Price,
+                Name = productDto.Name,
+                Price = productDto.Price,
             };
         }
         #endregion
@@ -40,12 +41,13 @@ namespace Shared.Data.Mapper.ProductMapper
         /// </summary>
         /// <param name="Product">The product.</param>
         /// <returns></returns>
-        public static DTOs.ProductDTOs.Version2.ProductDto ConvertProductToProductDtoExtensionVersion2(this Product Product)
+        public static DTOs.ProductDTOs.Version2.ProductDto ConvertProductToProductDtoExtensionVersion2(this Product product)
         {
             return new DTOs.ProductDTOs.Version2.ProductDto()
             {
-                Name = Product.Name,
-                CostPrice = Product.Price,
+                ID = product.ID,
+                Name = product.Name,
+                CostPrice = product.Price,
             };
         }
 
@@ -54,12 +56,12 @@ namespace Shared.Data.Mapper.ProductMapper
         /// </summary>
         /// <param name="ProductDto">The product dto.</param>
         /// <returns></returns>
-        public static Product ConvertProductDtoToProductExtensionVersion2(this DTOs.ProductDTOs.Version2.ProductDto ProductDto)
+        public static Product ConvertProductDtoToProductExtensionVersion2(this DTOs.ProductDTOs.Version2.ProductDto productDto)
         {
             return new Product()
             {
-                Name = ProductDto.Name,
-                Price = ProductDto.CostPrice,
+                Name = productDto.Name,
+                Price = productDto.CostPrice,
             };
         }
         #endregion

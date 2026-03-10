@@ -6,7 +6,6 @@ using Shared.Data.DTOs.ProductDTOs.Version1;
 using Shared.Data.DTOs.ResponseDTOs;
 using Shared.Data.Mapper.ProductMapper;
 using Shared.Data.Models.ErrorModel;
-using Shared.Data.Models.ProductModel;
 
 namespace Product.API.Repository.Version1.Implementations
 {

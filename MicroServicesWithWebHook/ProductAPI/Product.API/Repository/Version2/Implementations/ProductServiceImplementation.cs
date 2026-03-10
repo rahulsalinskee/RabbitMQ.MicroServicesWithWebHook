@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Product.API.Cache.Repository.Services;
 using Product.API.DataLayer;
 using Product.API.Repository.Version2.Services;
 using Shared.Data.DTOs.ProductDTOs.Version2;
@@ -11,10 +12,13 @@ namespace Product.API.Repository.Version2.Implementations
     public class ProductServiceImplementation : IProductService
     {
         private readonly ProductDbContext _productDbContext;
+        private readonly ICacheService _cacheService;
+        private const string ALL_PRODUCTS_CACHE_KEY = "ALL_PRODUCTS";
 
-        public ProductServiceImplementation(ProductDbContext productDbContext)
+        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService)
         {
             this._productDbContext = productDbContext;
+            this._cacheService = cacheService;
         }
 
         public Task<ResponseDto> AddBulkProductsAsync(List<AddProductDto> productDtos)
@@ -71,6 +75,9 @@ namespace Product.API.Repository.Version2.Implementations
 
             await this._productDbContext.Products.AddAsync(product);
             await this._productDbContext.SaveChangesAsync();
+
+            /* Invalidate (Delete) the cache */
+            await this._cacheService.RemoveDataAsync(ALL_PRODUCTS_CACHE_KEY);
 
             var addedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
 
@@ -237,6 +244,10 @@ namespace Product.API.Repository.Version2.Implementations
             this._productDbContext.Products.Remove(product);
             await this._productDbContext.SaveChangesAsync();
 
+            /* Invalidate (Delete) the cache */
+            await this._cacheService.RemoveDataAsync(key: $"Product-{id}");
+            await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
+
             return new ResponseDto()
             {
                 IsSuccess = true,
@@ -306,6 +317,22 @@ namespace Product.API.Repository.Version2.Implementations
 
         public async Task<ResponseDto> GetProductByIdAsync(int id)
         {
+            var cacheKey = $"PRODUCT_{id}";
+
+            /* Initially, Check the cache for the product */
+            var getProductFromCache = await this._cacheService.GetDataAsync<Shared.Data.Models.ProductModel.Product>(key: cacheKey);
+
+            if (getProductFromCache is not null)
+            {
+                return new ResponseDto()
+                {
+                    IsSuccess = true,
+                    Result = getProductFromCache,
+                    Message = "Product Found In Cache!",
+                    When = DateTime.Now,
+                };
+            }
+
             var product = await this._productDbContext.Products.FirstOrDefaultAsync(product => product.ID == id);
 
             if (product is null)
@@ -324,6 +351,9 @@ namespace Product.API.Repository.Version2.Implementations
                     When = applicationError.When,
                 };
             }
+
+            /* Add the product to the cache */
+            await this._cacheService.SetDataAsync(key: cacheKey, data: product, absoluteExpireTime: TimeSpan.FromMinutes(10));
 
             return new ResponseDto()
             {
@@ -431,6 +461,10 @@ namespace Product.API.Repository.Version2.Implementations
             this._productDbContext.Products.Update(product);
             await this._productDbContext.SaveChangesAsync();
 
+            /* Invalidate (Delete) the product from the cache */
+            await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
+            await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
+
             var updatedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
 
             return new ResponseDto()
@@ -485,6 +519,9 @@ namespace Product.API.Repository.Version2.Implementations
 
             this._productDbContext.Entry<Shared.Data.Models.ProductModel.Product>(product).State = EntityState.Deleted;
             await this._productDbContext.SaveChangesAsync();
+
+            /* Invalidate (Delete) the product from the cache */
+            await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
 
             var deletedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
 

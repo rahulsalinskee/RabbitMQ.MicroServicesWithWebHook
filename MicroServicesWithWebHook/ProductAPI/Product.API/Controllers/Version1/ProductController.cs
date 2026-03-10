@@ -36,7 +36,7 @@ namespace Product.API.Controllers.Version1
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         [MapToApiVersion("1.0")]
         public async Task<IActionResult> GetProductByIdVersion1(int id)
         {

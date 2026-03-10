@@ -1,6 +1,6 @@
 ﻿namespace Product.API.Cache.ConfigurationCache
 {
-    public static class RegisterCache
+    public static class ConfigureCache
     {
         public static IServiceCollection ConfigureCacheExtension(this IServiceCollection services, IConfiguration configuration)
         {

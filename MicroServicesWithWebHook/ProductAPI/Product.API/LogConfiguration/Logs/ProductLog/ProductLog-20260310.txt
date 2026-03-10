@@ -1,0 +1,70 @@
+[2026-03-10 13:01:05.444 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-10 13:01:07.464 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-10 13:01:07.471 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-10 13:01:07.742 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-10 13:01:07.744 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-10 13:01:07.746 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-10 13:35:53.423 +05:30] [INF] [Product.API] HTTP GET /openapi/v2.json responded 200 in 59.1664 ms
+ 
+[2026-03-10 13:35:56.264 +05:30] [INF] [Product.API] HTTP GET /openapi/v2.json responded 200 in 4.3279 ms
+ 
+[2026-03-10 13:36:04.620 +05:30] [INF] [Product.API] HTTP GET /api/v2/Product responded 200 in 1796.2565 ms
+ 
+[2026-03-10 13:42:07.079 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-10 13:42:08.377 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-10 13:42:08.382 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-10 13:42:08.636 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-10 13:42:08.638 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-10 13:42:08.640 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-10 13:42:12.191 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 37.8338 ms
+ 
+[2026-03-10 13:42:19.824 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 2288.6796 ms
+ 
+[2026-03-10 13:44:05.155 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-10 13:44:06.529 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-10 13:44:06.535 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-10 13:44:06.789 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-10 13:44:06.792 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-10 13:44:06.794 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-10 13:44:31.703 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 42.9559 ms
+ 
+[2026-03-10 13:58:07.857 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-10 13:58:08.975 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-10 13:58:08.983 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-10 13:58:09.189 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-10 13:58:09.191 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-10 13:58:09.193 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-10 13:58:14.531 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 37.5627 ms
+ 
+[2026-03-10 13:58:24.597 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product/5 responded 200 in 2070.4848 ms
+ 
+[2026-03-10 13:58:43.954 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 41.7905 ms
+ 
+[2026-03-10 13:58:45.635 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 74.2653 ms
+ 
+[2026-03-10 13:58:48.807 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product/5 responded 200 in 13.4002 ms
+ 
