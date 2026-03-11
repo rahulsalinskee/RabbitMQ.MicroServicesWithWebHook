@@ -1,0 +1,57 @@
+name: Microservices CI/CD Pipeline
+
+# 1. Define the triggers: When should this pipeline run?
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+# 2. Define the jobs
+jobs:
+  build-and-verify:
+    name: Build .NET Solution
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Download your code into the GitHub runner
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Step 2: Install the .NET 10 SDK
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    # Step 3: Restore NuGet packages for all projects in the solution
+    - name: Restore Dependencies
+      run: dotnet restore
+
+    # Step 4: Build the Gateway, APIs, and Shared Class Library
+    - name: Build Solution
+      run: dotnet build --no-restore --configuration Release
+
+    # Step 5: (Optional) Run Unit Tests if you add them later
+    - name: Run Tests
+      run: dotnet test --no-build --configuration Release --verbosity normal
+
+  # --- CD PHASE (Continuous Deployment) ---
+  # This job simulates packaging your APIs into Docker containers 
+  # It only runs if the 'build-and-verify' job succeeds.
+  build-docker-images:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+    needs: build-and-verify # Wait for the CI build to pass
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # Build the Product API Docker Image
+    - name: Build Product API Image
+      run: docker build -t myapp/product-api:latest -f Product.API/Dockerfile .
+
+    # Build the API Gateway Docker Image
+    - name: Build API Gateway Image
+      run: docker build -t myapp/api-gateway:latest -f API.Gateway/Dockerfile .
