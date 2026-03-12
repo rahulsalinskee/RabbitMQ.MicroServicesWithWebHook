@@ -1,0 +1,70 @@
+name: Deploy Microservices to Azure
+
+on:
+  push:
+    branches: [ "main" ]
+
+# Define environment variables to reuse throughout the script
+env:
+  REGISTRY: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+  RESOURCE_GROUP: 'rg-microservices-prod'
+  CONTAINER_APP_ENV: 'cae-microservices'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Checkout Code
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 2. Login to Azure using your stored secrets
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    # 3. Login to Azure Container Registry (ACR)
+    - name: Login to ACR
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.REGISTRY }}
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+
+    # 4. Build and Push Product API Image
+    - name: Build and Push Product API
+      run: |
+        docker build -t ${{ env.REGISTRY }}/product-api:${{ github.sha }} -f Product.API/Dockerfile .
+        docker push ${{ env.REGISTRY }}/product-api:${{ github.sha }}
+
+    # 5. Build and Push API Gateway Image
+    - name: Build and Push API Gateway
+      run: |
+        docker build -t ${{ env.REGISTRY }}/api-gateway:${{ github.sha }} -f API.Gateway/Dockerfile .
+        docker push ${{ env.REGISTRY }}/api-gateway:${{ github.sha }}
+
+    # 6. Deploy Product API to Azure Container Apps
+    - name: Deploy Product API to ACA
+      uses: azure/container-apps-deploy-action@v2
+      with:
+        appSourcePath: ${{ github.workspace }}
+        registryUrl: ${{ env.REGISTRY }}
+        registryUsername: ${{ secrets.REGISTRY_USERNAME }}
+        registryPassword: ${{ secrets.REGISTRY_PASSWORD }}
+        containerAppName: product-api-app
+        resourceGroup: ${{ env.RESOURCE_GROUP }}
+        imageToDeploy: ${{ env.REGISTRY }}/product-api:${{ github.sha }}
+
+    # 7. Deploy API Gateway to Azure Container Apps
+    - name: Deploy API Gateway to ACA
+      uses: azure/container-apps-deploy-action@v2
+      with:
+        appSourcePath: ${{ github.workspace }}
+        registryUrl: ${{ env.REGISTRY }}
+        registryUsername: ${{ secrets.REGISTRY_USERNAME }}
+        registryPassword: ${{ secrets.REGISTRY_PASSWORD }}
+        containerAppName: api-gateway-app
+        resourceGroup: ${{ env.RESOURCE_GROUP }}
+        imageToDeploy: ${{ env.REGISTRY }}/api-gateway:${{ github.sha }}
