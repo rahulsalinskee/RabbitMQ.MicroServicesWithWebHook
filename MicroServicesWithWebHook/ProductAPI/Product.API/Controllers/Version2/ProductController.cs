@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Product.API.Repository.Version2.Services;
+using Product.API.Repository.ProductServices.Version2.Services;
 using Product.API.ServerSideValidation;
 using Shared.Data.DTOs.ProductDTOs.Version2;
 

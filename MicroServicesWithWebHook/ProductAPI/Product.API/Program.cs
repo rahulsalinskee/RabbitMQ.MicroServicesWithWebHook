@@ -3,13 +3,16 @@ using Product.API.AttackPrevention.CORS;
 using Product.API.AttackPrevention.CSRF;
 using Product.API.AttackPrevention.RateLimitForDDoS;
 using Product.API.Cache.ConfigurationCache;
-using Product.API.Cache.Repository.Implementations;
-using Product.API.Cache.Repository.Services;
 using Product.API.DataLayer;
 using Product.API.Exception;
 using Product.API.LogConfiguration;
+using Product.API.Repository.CacheServices.Implementations;
+using Product.API.Repository.CacheServices.Services;
+using Product.API.Repository.FilterServices.Implementations;
+using Product.API.Repository.FilterServices.Services;
 using Product.API.Version;
 using Serilog;
+using Shared.Data.Models.ProductModel;
 
 // Initialize logger first to capture startup errors
 Log.Logger = ProductLog.GenerateProductLog();
@@ -51,11 +54,14 @@ try
     /* -- CORS STOP: Service Registration */
 
     /* --- Register Product Services & Implementations --- */
-    builder.Services.AddScoped<Product.API.Repository.Version1.Services.IProductService, Product.API.Repository.Version1.Implementations.ProductServiceImplementation>();
-    builder.Services.AddScoped<Product.API.Repository.Version2.Services.IProductService, Product.API.Repository.Version2.Implementations.ProductServiceImplementation>();
+    builder.Services.AddScoped<Product.API.Repository.ProductServices.Version1.Services.IProductService, Product.API.Repository.ProductServices.Version1.Implementations.ProductServiceImplementation>();
+    builder.Services.AddScoped<Product.API.Repository.ProductServices.Version2.Services.IProductService, Product.API.Repository.ProductServices.Version2.Implementations.ProductServiceImplementation>();
 
     /* --- Register Cache Services & Implementations --- */
     builder.Services.AddScoped<ICacheService, CacheServiceImplementation>();
+
+    /* --- Register Filter Services & Implementations --- */
+    builder.Services.AddScoped<IFilterService<Shared.Data.Models.ProductModel.Product>, FilterImplementation<Shared.Data.Models.ProductModel.Product>>();
 
     var app = builder.Build();
 

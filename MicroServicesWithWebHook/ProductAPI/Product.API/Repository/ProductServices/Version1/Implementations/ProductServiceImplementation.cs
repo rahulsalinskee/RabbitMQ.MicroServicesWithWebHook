@@ -1,24 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Product.API.Cache.Repository.Services;
 using Product.API.DataLayer;
-using Product.API.Repository.Version2.Services;
-using Shared.Data.DTOs.ProductDTOs.Version2;
+using Product.API.Repository.CacheServices.Services;
+using Product.API.Repository.FilterServices.Services;
+using Product.API.Repository.ProductServices.Version1.Services;
+using Shared.Data.DTOs.ProductDTOs.Version1;
 using Shared.Data.DTOs.ResponseDTOs;
 using Shared.Data.Mapper.ProductMapper;
 using Shared.Data.Models.ErrorModel;
 
-namespace Product.API.Repository.Version2.Implementations
+namespace Product.API.Repository.ProductServices.Version1.Implementations
 {
     public class ProductServiceImplementation : IProductService
     {
         private readonly ProductDbContext _productDbContext;
         private readonly ICacheService _cacheService;
+        private readonly IFilterService<Shared.Data.Models.ProductModel.Product> _filterService;
+
         private const string ALL_PRODUCTS_CACHE_KEY = "ALL_PRODUCTS";
 
-        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService)
+        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService, IFilterService<Shared.Data.Models.ProductModel.Product> filterService)
         {
             this._productDbContext = productDbContext;
             this._cacheService = cacheService;
+            this._filterService = filterService;
         }
 
         public Task<ResponseDto> AddBulkProductsAsync(List<AddProductDto> productDtos)
@@ -68,18 +72,18 @@ namespace Product.API.Repository.Version2.Implementations
             var productDto = new ProductDto()
             {
                 Name = addProductDto.Name,
-                CostPrice = addProductDto.CostPrice,
+                Price = addProductDto.Price,
             };
 
-            var product = productDto.ConvertProductDtoToProductExtensionVersion2();
+            var product = productDto.ConvertProductDtoToProductExtensionVersion1();
 
             await this._productDbContext.Products.AddAsync(product);
             await this._productDbContext.SaveChangesAsync();
 
             /* Invalidate (Delete) the cache */
-            await this._cacheService.RemoveDataAsync(ALL_PRODUCTS_CACHE_KEY);
+            await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
 
-            var addedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
+            var addedProductDto = product.ConvertProductToProductDtoExtensionVersion1();
 
             return new ResponseDto()
             {
@@ -245,7 +249,7 @@ namespace Product.API.Repository.Version2.Implementations
             await this._productDbContext.SaveChangesAsync();
 
             /* Invalidate (Delete) the cache */
-            await this._cacheService.RemoveDataAsync(key: $"Product-{id}");
+            await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
             await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
 
             return new ResponseDto()
@@ -257,7 +261,7 @@ namespace Product.API.Repository.Version2.Implementations
             };
         }
 
-        public async Task<ResponseDto> GetAllProductsAsync()
+        public async Task<ResponseDto> GetAllProductsAsync(string? columnName = null, string? filterKeyWord = null)
         {
             var products = await this._productDbContext.Products.ToListAsync();
 
@@ -299,20 +303,41 @@ namespace Product.API.Repository.Version2.Implementations
 
             IList<ProductDto> productDtos = new List<ProductDto>();
 
-            foreach (var product in products)
-            {
-                productDto = product.ConvertProductToProductDtoExtensionVersion2();
+            var filteredProducts = this._filterService.ApplyFilterOn(queryOn: products.AsQueryable(), columnName: columnName, filterKeyWord: filterKeyWord);
 
-                productDtos.Add(productDto);
+            if (filteredProducts.Any())
+            {
+                foreach (var product in filteredProducts)
+                {
+                    productDto = product.ConvertProductToProductDtoExtensionVersion1();
+
+                    productDtos.Add(productDto);
+                }
+
+                return new ResponseDto()
+                {
+                    IsSuccess = true,
+                    Result = productDtos,
+                    Message = "Products Found!",
+                    When = DateTime.Now,
+                };
             }
-
-            return new ResponseDto()
+            else
             {
-                IsSuccess = true,
-                Result = productDtos,
-                Message = "Products Found!",
-                When = DateTime.Now,
-            };
+                ApplicationError applicationError = new()
+                {
+                    When = DateTime.Now,
+                    Message = "Product Not Found With This Filter Keyword!",
+                };
+
+                return new ResponseDto()
+                {
+                    IsSuccess = false,
+                    Result = null,
+                    Message = applicationError.Message,
+                    When = applicationError.When,
+                };
+            }
         }
 
         public async Task<ResponseDto> GetProductByIdAsync(int id)
@@ -320,6 +345,7 @@ namespace Product.API.Repository.Version2.Implementations
             var cacheKey = $"PRODUCT_{id}";
 
             /* Initially, Check the cache for the product */
+
             var getProductFromCache = await this._cacheService.GetDataAsync<Shared.Data.Models.ProductModel.Product>(key: cacheKey);
 
             if (getProductFromCache is not null)
@@ -353,7 +379,7 @@ namespace Product.API.Repository.Version2.Implementations
             }
 
             /* Add the product to the cache */
-            await this._cacheService.SetDataAsync(key: cacheKey, data: product, absoluteExpireTime: TimeSpan.FromMinutes(10));
+            await this._cacheService.SetDataAsync<Shared.Data.Models.ProductModel.Product>(key: cacheKey, data: product, absoluteExpireTime: TimeSpan.FromMinutes(5));
 
             return new ResponseDto()
             {
@@ -383,7 +409,7 @@ namespace Product.API.Repository.Version2.Implementations
                 });
             }
 
-            if (updateProductDto.Name == string.Empty || updateProductDto.CostPrice == 0)
+            if (updateProductDto.Name == string.Empty || updateProductDto.Price == 0)
             {
                 ApplicationError applicationError = new()
                 {
@@ -456,16 +482,16 @@ namespace Product.API.Repository.Version2.Implementations
             }
 
             product.Name = updateProductDto.Name;
-            product.Price = updateProductDto.CostPrice;
+            product.Price = updateProductDto.Price;
 
             this._productDbContext.Products.Update(product);
             await this._productDbContext.SaveChangesAsync();
 
-            /* Invalidate (Delete) the product from the cache */
+            /* Invalidate (Delete) the cache */
             await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
             await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
 
-            var updatedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
+            var updatedProductDto = product.ConvertProductToProductDtoExtensionVersion1();
 
             return new ResponseDto()
             {
@@ -520,10 +546,7 @@ namespace Product.API.Repository.Version2.Implementations
             this._productDbContext.Entry<Shared.Data.Models.ProductModel.Product>(product).State = EntityState.Deleted;
             await this._productDbContext.SaveChangesAsync();
 
-            /* Invalidate (Delete) the product from the cache */
-            await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
-
-            var deletedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
+            var deletedProductDto = product.ConvertProductToProductDtoExtensionVersion1();
 
             return new ResponseDto()
             {

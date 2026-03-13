@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
-using Product.API.Repository.Version1.Services;
+using Product.API.Repository.ProductServices.Version1.Services;
 using Product.API.ServerSideValidation;
 using Shared.Data.DTOs.ProductDTOs.Version1;
 
@@ -23,9 +23,9 @@ namespace Product.API.Controllers.Version1
         #region Version 1
         [HttpGet]
         [MapToApiVersion("1.0")]
-        public async Task<IActionResult> GetAllProductsVersion1()
+        public async Task<IActionResult> GetAllProductsVersion1([FromQuery] string? filterOnColumn, [FromQuery] string? filterKeyWord)
         {
-            var response = await this._productService.GetAllProductsAsync();
+            var response = await this._productService.GetAllProductsAsync(columnName: filterOnColumn, filterKeyWord: filterKeyWord);
 
             if (response.IsSuccess)
             {

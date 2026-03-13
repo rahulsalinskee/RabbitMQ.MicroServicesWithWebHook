@@ -1,4 +1,4 @@
-﻿namespace Product.API.Cache.Repository.Services
+﻿namespace Product.API.Repository.CacheServices.Services
 {
     public interface ICacheService
     {

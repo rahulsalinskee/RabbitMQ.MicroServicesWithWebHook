@@ -1,11 +1,11 @@
 ﻿using Shared.Data.DTOs.ProductDTOs.Version1;
 using Shared.Data.DTOs.ResponseDTOs;
 
-namespace Product.API.Repository.Version1.Services
+namespace Product.API.Repository.ProductServices.Version1.Services
 {
     public interface IProductService
     {
-        public Task<ResponseDto> GetAllProductsAsync();
+        public Task<ResponseDto> GetAllProductsAsync(string? columnName = null, string? filterKeyWord = null);
 
         public Task<ResponseDto> GetProductByIdAsync(int id);
 

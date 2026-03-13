@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Product.API.Cache.Repository.Services;
 using Product.API.DataLayer;
-using Product.API.Repository.Version1.Services;
-using Shared.Data.DTOs.ProductDTOs.Version1;
+using Product.API.Repository.CacheServices.Services;
+using Product.API.Repository.ProductServices.Version2.Services;
+using Shared.Data.DTOs.ProductDTOs.Version2;
 using Shared.Data.DTOs.ResponseDTOs;
 using Shared.Data.Mapper.ProductMapper;
 using Shared.Data.Models.ErrorModel;
 
-namespace Product.API.Repository.Version1.Implementations
+namespace Product.API.Repository.ProductServices.Version2.Implementations
 {
     public class ProductServiceImplementation : IProductService
     {
@@ -68,18 +68,18 @@ namespace Product.API.Repository.Version1.Implementations
             var productDto = new ProductDto()
             {
                 Name = addProductDto.Name,
-                Price = addProductDto.Price,
+                CostPrice = addProductDto.CostPrice,
             };
 
-            var product = productDto.ConvertProductDtoToProductExtensionVersion1();
+            var product = productDto.ConvertProductDtoToProductExtensionVersion2();
 
             await this._productDbContext.Products.AddAsync(product);
             await this._productDbContext.SaveChangesAsync();
 
             /* Invalidate (Delete) the cache */
-            await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
+            await this._cacheService.RemoveDataAsync(ALL_PRODUCTS_CACHE_KEY);
 
-            var addedProductDto = product.ConvertProductToProductDtoExtensionVersion1();
+            var addedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
 
             return new ResponseDto()
             {
@@ -245,7 +245,7 @@ namespace Product.API.Repository.Version1.Implementations
             await this._productDbContext.SaveChangesAsync();
 
             /* Invalidate (Delete) the cache */
-            await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
+            await this._cacheService.RemoveDataAsync(key: $"Product-{id}");
             await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
 
             return new ResponseDto()
@@ -301,7 +301,7 @@ namespace Product.API.Repository.Version1.Implementations
 
             foreach (var product in products)
             {
-                productDto = product.ConvertProductToProductDtoExtensionVersion1();
+                productDto = product.ConvertProductToProductDtoExtensionVersion2();
 
                 productDtos.Add(productDto);
             }
@@ -320,7 +320,6 @@ namespace Product.API.Repository.Version1.Implementations
             var cacheKey = $"PRODUCT_{id}";
 
             /* Initially, Check the cache for the product */
-
             var getProductFromCache = await this._cacheService.GetDataAsync<Shared.Data.Models.ProductModel.Product>(key: cacheKey);
 
             if (getProductFromCache is not null)
@@ -354,7 +353,7 @@ namespace Product.API.Repository.Version1.Implementations
             }
 
             /* Add the product to the cache */
-            await this._cacheService.SetDataAsync<Shared.Data.Models.ProductModel.Product>(key: cacheKey, data: product, absoluteExpireTime: TimeSpan.FromMinutes(5));
+            await this._cacheService.SetDataAsync(key: cacheKey, data: product, absoluteExpireTime: TimeSpan.FromMinutes(10));
 
             return new ResponseDto()
             {
@@ -384,7 +383,7 @@ namespace Product.API.Repository.Version1.Implementations
                 });
             }
 
-            if (updateProductDto.Name == string.Empty || updateProductDto.Price == 0)
+            if (updateProductDto.Name == string.Empty || updateProductDto.CostPrice == 0)
             {
                 ApplicationError applicationError = new()
                 {
@@ -457,16 +456,16 @@ namespace Product.API.Repository.Version1.Implementations
             }
 
             product.Name = updateProductDto.Name;
-            product.Price = updateProductDto.Price;
+            product.Price = updateProductDto.CostPrice;
 
             this._productDbContext.Products.Update(product);
             await this._productDbContext.SaveChangesAsync();
 
-            /* Invalidate (Delete) the cache */
+            /* Invalidate (Delete) the product from the cache */
             await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
             await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
 
-            var updatedProductDto = product.ConvertProductToProductDtoExtensionVersion1();
+            var updatedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
 
             return new ResponseDto()
             {
@@ -521,7 +520,10 @@ namespace Product.API.Repository.Version1.Implementations
             this._productDbContext.Entry<Shared.Data.Models.ProductModel.Product>(product).State = EntityState.Deleted;
             await this._productDbContext.SaveChangesAsync();
 
-            var deletedProductDto = product.ConvertProductToProductDtoExtensionVersion1();
+            /* Invalidate (Delete) the product from the cache */
+            await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
+
+            var deletedProductDto = product.ConvertProductToProductDtoExtensionVersion2();
 
             return new ResponseDto()
             {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
-using Product.API.Cache.Repository.Services;
+using Product.API.Repository.CacheServices.Services;
 using System.Text.Json;
 
-namespace Product.API.Cache.Repository.Implementations
+namespace Product.API.Repository.CacheServices.Implementations
 {
     public class CacheServiceImplementation : ICacheService
     {

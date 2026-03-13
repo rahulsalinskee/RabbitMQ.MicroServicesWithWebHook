@@ -1,0 +1,18 @@
+[2026-03-13 16:51:26.468 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 134.8944 ms
+ 
+[2026-03-13 16:51:29.602 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 3.4304 ms
+ 
+[2026-03-13 16:51:51.356 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 5068.2230 ms
+ 
+[2026-03-13 16:52:25.526 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 46.6047 ms
+ 
+[2026-03-13 16:52:34.400 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 96.2737 ms
+ 
+[2026-03-13 16:52:42.975 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 7.4387 ms
+ 
+[2026-03-13 16:52:55.356 +05:30] [ERR] [Product.API] Failed to retrieve products: Product Not Found With This Filter Keyword!
+ 
+[2026-03-13 16:52:55.360 +05:30] [ERR] [Product.API] HTTP GET /api/v1/Product responded 500 in 15.1958 ms
+ 
+[2026-03-13 16:53:13.971 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 14.9384 ms
+ 

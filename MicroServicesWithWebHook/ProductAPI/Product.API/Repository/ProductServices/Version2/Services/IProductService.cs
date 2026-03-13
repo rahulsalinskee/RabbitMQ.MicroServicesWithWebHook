@@ -1,7 +1,7 @@
 ﻿using Shared.Data.DTOs.ProductDTOs.Version2;
 using Shared.Data.DTOs.ResponseDTOs;
 
-namespace Product.API.Repository.Version2.Services
+namespace Product.API.Repository.ProductServices.Version2.Services
 {
     public interface IProductService
     {
