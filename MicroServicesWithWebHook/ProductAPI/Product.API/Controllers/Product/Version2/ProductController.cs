@@ -4,7 +4,7 @@ using Product.API.Repository.ProductServices.Version2.Services;
 using Product.API.ServerSideValidation;
 using Shared.Data.DTOs.ProductDTOs.Version2;
 
-namespace Product.API.Controllers.Version2
+namespace Product.API.Controllers.Product.Version2
 {
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
@@ -23,9 +23,9 @@ namespace Product.API.Controllers.Version2
         #region Version 2
         [HttpGet]
         [MapToApiVersion("2.0")]
-        public async Task<IActionResult> GetAllProductsVersion2()
+        public async Task<IActionResult> GetAllProductsVersion2(string? columnName = null, string? filterKeyWord = null)
         {
-            var response = await this._productService.GetAllProductsAsync();
+            var response = await this._productService.GetAllProductsAsync(columnName: columnName , filterKeyWord: filterKeyWord);
 
             if (response.IsSuccess)
             {

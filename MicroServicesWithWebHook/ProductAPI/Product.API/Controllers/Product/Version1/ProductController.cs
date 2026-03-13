@@ -4,7 +4,7 @@ using Product.API.Repository.ProductServices.Version1.Services;
 using Product.API.ServerSideValidation;
 using Shared.Data.DTOs.ProductDTOs.Version1;
 
-namespace Product.API.Controllers.Version1
+namespace Product.API.Controllers.Product.Version1
 {
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]

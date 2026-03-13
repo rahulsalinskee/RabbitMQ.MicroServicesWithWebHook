@@ -5,7 +5,7 @@ namespace Product.API.Repository.ProductServices.Version2.Services
 {
     public interface IProductService
     {
-        public Task<ResponseDto> GetAllProductsAsync();
+        public Task<ResponseDto> GetAllProductsAsync(string? columnName = null, string? filterKeyWord = null);
 
         public Task<ResponseDto> GetProductByIdAsync(int id);
 

@@ -12,7 +12,8 @@ using Product.API.Repository.FilterServices.Implementations;
 using Product.API.Repository.FilterServices.Services;
 using Product.API.Version;
 using Serilog;
-using Shared.Data.Models.ProductModel;
+using ProductServiceVersion1 = Product.API.Repository.ProductServices.Version1;
+using ProductServiceVersion2 = Product.API.Repository.ProductServices.Version2;
 
 // Initialize logger first to capture startup errors
 Log.Logger = ProductLog.GenerateProductLog();
@@ -54,8 +55,8 @@ try
     /* -- CORS STOP: Service Registration */
 
     /* --- Register Product Services & Implementations --- */
-    builder.Services.AddScoped<Product.API.Repository.ProductServices.Version1.Services.IProductService, Product.API.Repository.ProductServices.Version1.Implementations.ProductServiceImplementation>();
-    builder.Services.AddScoped<Product.API.Repository.ProductServices.Version2.Services.IProductService, Product.API.Repository.ProductServices.Version2.Implementations.ProductServiceImplementation>();
+    builder.Services.AddScoped<ProductServiceVersion1.Services.IProductService, ProductServiceVersion1.Implementations.ProductServiceImplementation>();
+    builder.Services.AddScoped<ProductServiceVersion2.Services.IProductService, ProductServiceVersion2.Implementations.ProductServiceImplementation>();
 
     /* --- Register Cache Services & Implementations --- */
     builder.Services.AddScoped<ICacheService, CacheServiceImplementation>();

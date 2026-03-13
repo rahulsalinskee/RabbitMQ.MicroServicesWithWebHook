@@ -7,6 +7,7 @@ using Shared.Data.DTOs.ProductDTOs.Version1;
 using Shared.Data.DTOs.ResponseDTOs;
 using Shared.Data.Mapper.ProductMapper;
 using Shared.Data.Models.ErrorModel;
+using ProductModel = Shared.Data.Models.ProductModel.Product;
 
 namespace Product.API.Repository.ProductServices.Version1.Implementations
 {
@@ -14,11 +15,11 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
     {
         private readonly ProductDbContext _productDbContext;
         private readonly ICacheService _cacheService;
-        private readonly IFilterService<Shared.Data.Models.ProductModel.Product> _filterService;
+        private readonly IFilterService<ProductModel> _filterService;
 
         private const string ALL_PRODUCTS_CACHE_KEY = "ALL_PRODUCTS";
 
-        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService, IFilterService<Shared.Data.Models.ProductModel.Product> filterService)
+        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService, IFilterService<ProductModel> filterService)
         {
             this._productDbContext = productDbContext;
             this._cacheService = cacheService;
@@ -346,7 +347,7 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
 
             /* Initially, Check the cache for the product */
 
-            var getProductFromCache = await this._cacheService.GetDataAsync<Shared.Data.Models.ProductModel.Product>(key: cacheKey);
+            var getProductFromCache = await this._cacheService.GetDataAsync<ProductModel>(key: cacheKey);
 
             if (getProductFromCache is not null)
             {
@@ -379,7 +380,7 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
             }
 
             /* Add the product to the cache */
-            await this._cacheService.SetDataAsync<Shared.Data.Models.ProductModel.Product>(key: cacheKey, data: product, absoluteExpireTime: TimeSpan.FromMinutes(5));
+            await this._cacheService.SetDataAsync<ProductModel>(key: cacheKey, data: product, absoluteExpireTime: TimeSpan.FromMinutes(5));
 
             return new ResponseDto()
             {
@@ -521,7 +522,7 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
                 };
             }
 
-            Shared.Data.Models.ProductModel.Product product = new()
+            ProductModel product = new()
             {
                 ID = id
             };
@@ -543,7 +544,7 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
                 };
             }
 
-            this._productDbContext.Entry<Shared.Data.Models.ProductModel.Product>(product).State = EntityState.Deleted;
+            this._productDbContext.Entry<ProductModel>(product).State = EntityState.Deleted;
             await this._productDbContext.SaveChangesAsync();
 
             var deletedProductDto = product.ConvertProductToProductDtoExtensionVersion1();

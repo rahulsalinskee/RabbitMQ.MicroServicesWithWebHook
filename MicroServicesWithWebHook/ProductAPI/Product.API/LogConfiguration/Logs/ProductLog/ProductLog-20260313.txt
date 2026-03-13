@@ -16,3 +16,108 @@
  
 [2026-03-13 16:53:13.971 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 14.9384 ms
  
+[2026-03-13 19:21:04.946 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-13 19:21:07.796 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-13 19:21:07.830 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-13 19:21:08.050 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-13 19:21:08.052 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-13 19:21:08.056 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-13 19:22:19.558 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 54.4800 ms
+ 
+[2026-03-13 19:22:28.421 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 1760.0615 ms
+ 
+[2026-03-13 19:22:52.103 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 71.8396 ms
+ 
+[2026-03-13 19:23:27.308 +05:30] [INF] [Product.API] HTTP GET /openapi/v2.json responded 200 in 7.4476 ms
+ 
+[2026-03-13 19:23:32.531 +05:30] [INF] [Product.API] HTTP GET /api/v2/Product responded 200 in 124.1667 ms
+ 
+[2026-03-13 19:24:04.581 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 2.8962 ms
+ 
+[2026-03-13 19:24:36.598 +05:30] [INF] [Product.API] HTTP GET /openapi/v2.json responded 200 in 4.4217 ms
+ 
+[2026-03-13 19:26:57.043 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 2.2135 ms
+ 
+[2026-03-13 19:32:00.717 +05:30] [ERR] [Product.API] HTTP GET /api/v1/Product/5 responded 500 in 291378.0635 ms
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: It was not possible to connect to the redis server(s). ConnectTimeout, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Idle, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-L1O9QC9(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=8,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=11249,Timers=7), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). ConnectTimeout
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at Product.API.Repository.CacheServices.Implementations.CacheServiceImplementation.GetDataAsync[T](String key) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Repository\CacheServices\Implementations\CacheServiceImplementation.cs:line 18
+   at Product.API.Repository.ProductServices.Version1.Implementations.ProductServiceImplementation.GetProductByIdAsync(Int32 id) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Repository\ProductServices\Version1\Implementations\ProductServiceImplementation.cs:line 350
+   at Product.API.Controllers.Product.Version1.ProductController.GetProductByIdVersion1(Int32 id) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Controllers\Product\Version1\ProductController.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+ 
+[2026-03-13 19:32:01.123 +05:30] [ERR] [Product.API] Application Error occurred on Date & Time: "2026-03-13T19:32:01.1224142+05:30"
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: It was not possible to connect to the redis server(s). ConnectTimeout, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Idle, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-L1O9QC9(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=8,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=11249,Timers=7), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). ConnectTimeout
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at Product.API.Repository.CacheServices.Implementations.CacheServiceImplementation.GetDataAsync[T](String key) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Repository\CacheServices\Implementations\CacheServiceImplementation.cs:line 18
+   at Product.API.Repository.ProductServices.Version1.Implementations.ProductServiceImplementation.GetProductByIdAsync(Int32 id) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Repository\ProductServices\Version1\Implementations\ProductServiceImplementation.cs:line 350
+   at Product.API.Controllers.Product.Version1.ProductController.GetProductByIdVersion1(Int32 id) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Controllers\Product\Version1\ProductController.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Product.API.Exception.GlobalExceptionHandler.InvokeAsync(HttpContext httpContext) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\GlobalException\GlobalExceptionHandler.cs:line 20
+ 
+[2026-03-13 19:32:01.133 +05:30] [ERR] [Product.API] Application Error occurred with Message: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: It was not possible to connect to the redis server(s). ConnectTimeout, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Idle, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-L1O9QC9(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=8,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=11249,Timers=7), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+StackExchange.Redis.RedisConnectionException: The message timed out in the backlog attempting to send because no connection became available (5000ms) - Last Connection Exception: It was not possible to connect to the redis server(s). ConnectTimeout, command=HMGET, timeout: 5000, inst: 0, qu: 0, qs: 0, aw: False, bw: CheckingForTimeout, rs: NotStarted, ws: Idle, in: 0, last-in: 0, cur-in: 0, sync-ops: 0, async-ops: 1, serverEndpoint: localhost:6379, conn-sec: n/a, aoc: 0, mc: 1/1/0, mgr: 10 of 10 available, clientName: DESKTOP-L1O9QC9(SE.Redis-v2.7.27.49176), IOCP: (Busy=0,Free=1000,Min=1,Max=1000), WORKER: (Busy=2,Free=32765,Min=8,Max=32767), POOL: (Threads=6,QueuedItems=0,CompletedItems=11249,Timers=7), v: 2.7.27.49176 (Please take a look at this article for some common client-side issues that can cause timeouts: https://stackexchange.github.io/StackExchange.Redis/Timeouts)
+ ---> StackExchange.Redis.RedisConnectionException: It was not possible to connect to the redis server(s). ConnectTimeout
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAndRefreshAsync(String key, Boolean getData, CancellationToken token)
+   at Microsoft.Extensions.Caching.StackExchangeRedis.RedisCache.GetAsync(String key, CancellationToken token)
+   at Microsoft.Extensions.Caching.Distributed.DistributedCacheExtensions.GetStringAsync(IDistributedCache cache, String key, CancellationToken token)
+   at Product.API.Repository.CacheServices.Implementations.CacheServiceImplementation.GetDataAsync[T](String key) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Repository\CacheServices\Implementations\CacheServiceImplementation.cs:line 18
+   at Product.API.Repository.ProductServices.Version1.Implementations.ProductServiceImplementation.GetProductByIdAsync(Int32 id) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Repository\ProductServices\Version1\Implementations\ProductServiceImplementation.cs:line 350
+   at Product.API.Controllers.Product.Version1.ProductController.GetProductByIdVersion1(Int32 id) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\Controllers\Product\Version1\ProductController.cs:line 43
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Product.API.Exception.GlobalExceptionHandler.InvokeAsync(HttpContext httpContext) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\GlobalException\GlobalExceptionHandler.cs:line 20
+ 
+[2026-03-13 19:32:04.276 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product/5 responded 200 in 375.0431 ms
+ 
+[2026-03-13 19:32:09.292 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product/5 responded 200 in 13.2636 ms
+ 
+[2026-03-13 19:32:10.091 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product/5 responded 200 in 2.3935 ms
+ 

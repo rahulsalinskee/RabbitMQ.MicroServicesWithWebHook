@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Product.API.DataLayer;
 using Product.API.Repository.CacheServices.Services;
+using Product.API.Repository.FilterServices.Services;
 using Product.API.Repository.ProductServices.Version2.Services;
 using Shared.Data.DTOs.ProductDTOs.Version2;
 using Shared.Data.DTOs.ResponseDTOs;
 using Shared.Data.Mapper.ProductMapper;
 using Shared.Data.Models.ErrorModel;
+using ProductModel = Shared.Data.Models.ProductModel.Product;
 
 namespace Product.API.Repository.ProductServices.Version2.Implementations
 {
@@ -13,12 +15,14 @@ namespace Product.API.Repository.ProductServices.Version2.Implementations
     {
         private readonly ProductDbContext _productDbContext;
         private readonly ICacheService _cacheService;
+        private readonly IFilterService<ProductModel> _filterService;
         private const string ALL_PRODUCTS_CACHE_KEY = "ALL_PRODUCTS";
 
-        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService)
+        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService, IFilterService<ProductModel> filterService)
         {
             this._productDbContext = productDbContext;
             this._cacheService = cacheService;
+            this._filterService = filterService;
         }
 
         public Task<ResponseDto> AddBulkProductsAsync(List<AddProductDto> productDtos)
@@ -257,7 +261,7 @@ namespace Product.API.Repository.ProductServices.Version2.Implementations
             };
         }
 
-        public async Task<ResponseDto> GetAllProductsAsync()
+        public async Task<ResponseDto> GetAllProductsAsync(string? columnName = null, string? filterKeyWord = null)
         {
             var products = await this._productDbContext.Products.ToListAsync();
 
@@ -299,20 +303,41 @@ namespace Product.API.Repository.ProductServices.Version2.Implementations
 
             IList<ProductDto> productDtos = new List<ProductDto>();
 
-            foreach (var product in products)
-            {
-                productDto = product.ConvertProductToProductDtoExtensionVersion2();
+            var filteredProducts = this._filterService.ApplyFilterOn(queryOn: products.AsQueryable(), columnName: columnName, filterKeyWord: filterKeyWord);
 
-                productDtos.Add(productDto);
+            if (filteredProducts is not null)
+            {
+                foreach (var product in filteredProducts)
+                {
+                    productDto = product.ConvertProductToProductDtoExtensionVersion2();
+
+                    productDtos.Add(productDto);
+                }
+
+                return new ResponseDto()
+                {
+                    IsSuccess = true,
+                    Result = productDtos,
+                    Message = "Filtered Product(s) Found!",
+                    When = DateTime.Now,
+                }; 
             }
-
-            return new ResponseDto()
+            else
             {
-                IsSuccess = true,
-                Result = productDtos,
-                Message = "Products Found!",
-                When = DateTime.Now,
-            };
+                ApplicationError applicationError = new()
+                {
+                    When = DateTime.Now,
+                    Message = "Product Not Found!",
+                };
+
+                return new ResponseDto()
+                {
+                    IsSuccess = false,
+                    Result = null,
+                    Message = applicationError.Message,
+                    When = applicationError.When,
+                };
+            }
         }
 
         public async Task<ResponseDto> GetProductByIdAsync(int id)
@@ -320,7 +345,7 @@ namespace Product.API.Repository.ProductServices.Version2.Implementations
             var cacheKey = $"PRODUCT_{id}";
 
             /* Initially, Check the cache for the product */
-            var getProductFromCache = await this._cacheService.GetDataAsync<Shared.Data.Models.ProductModel.Product>(key: cacheKey);
+            var getProductFromCache = await this._cacheService.GetDataAsync<ProductModel>(key: cacheKey);
 
             if (getProductFromCache is not null)
             {
@@ -495,7 +520,7 @@ namespace Product.API.Repository.ProductServices.Version2.Implementations
                 };
             }
 
-            Shared.Data.Models.ProductModel.Product product = new()
+            ProductModel product = new()
             {
                 ID = id
             };
@@ -517,7 +542,7 @@ namespace Product.API.Repository.ProductServices.Version2.Implementations
                 };
             }
 
-            this._productDbContext.Entry<Shared.Data.Models.ProductModel.Product>(product).State = EntityState.Deleted;
+            this._productDbContext.Entry<ProductModel>(product).State = EntityState.Deleted;
             await this._productDbContext.SaveChangesAsync();
 
             /* Invalidate (Delete) the product from the cache */
