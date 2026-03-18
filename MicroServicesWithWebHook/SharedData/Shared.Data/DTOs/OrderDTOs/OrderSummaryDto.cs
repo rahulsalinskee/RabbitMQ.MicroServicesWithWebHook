@@ -1,8 +1,12 @@
-﻿namespace Shared.Data.DTOs.OrderDTOs
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Shared.Data.DTOs.OrderDTOs
 {
-    public record OrderDto
+    public record OrderSummaryDto
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         public int ProductId { get; set; }
 

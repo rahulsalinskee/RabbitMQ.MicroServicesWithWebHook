@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shared.Data.DTOs.OrderDTOs
+﻿namespace Shared.Data.DTOs.OrderDTOs
 {
-    internal class UpdateOrderDto
-    {
-    }
+    public record UpdateOrderDto
+    (
+        int ProductId,
+        string ProductName,
+        decimal ProductPrice,
+        int Quantity,
+        decimal TotalAmount,
+        DateTime Date
+    );
 }

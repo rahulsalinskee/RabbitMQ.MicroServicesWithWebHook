@@ -1,10 +1,12 @@
-﻿namespace Shared.Data.DTOs.OrderDTOs
-{
-    public record OrderDto
-    {
-        public int Id { get; set; }
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-        public int ProductId { get; set; }
+namespace Shared.Data.DTOs.OrderEmailBodyDTOs
+{
+    public record OrderEmailBodyDto
+    {
+        public int OrderID { get; set; }
 
         public string ProductName { get; set; } = string.Empty;
 

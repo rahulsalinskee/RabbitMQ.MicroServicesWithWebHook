@@ -18,3 +18,12 @@ services:
     depends_on:
       - redis-cache
     restart: always
+
+  # The RabbitMQ Message Broker (Added this section!)
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-broker
+    ports:
+      - "5672:5672" # The standard AMQP port your code uses
+      - "15672:15672" # The Web UI Management port
+    restart: always

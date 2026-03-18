@@ -1,0 +1,18 @@
+[2026-03-18 13:19:49.037 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-03-18 13:19:51.541 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-03-18 13:19:51.574 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-03-18 13:19:51.576 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-03-18 13:19:51.631 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-18 13:19:51.633 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-03-18 13:19:51.635 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-03-18 13:39:07.990 +05:30] [INF] [Order.API] HTTP GET /openapi/v1.json responded 200 in 18.0969 ms
+ 
+[2026-03-18 13:39:14.849 +05:30] [INF] [Order.API] HTTP GET /api/Order responded 400 in 2229.1071 ms
+ 

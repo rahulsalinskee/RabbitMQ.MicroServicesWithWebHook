@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MassTransit;
+using Microsoft.EntityFrameworkCore;
 using Product.API.DataLayer;
 using Product.API.Repository.CacheServices.Services;
 using Product.API.Repository.FilterServices.Services;
@@ -16,14 +17,15 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
         private readonly ProductDbContext _productDbContext;
         private readonly ICacheService _cacheService;
         private readonly IFilterService<ProductModel> _filterService;
-
+        private readonly IPublishEndpoint _publishEndpoint;
         private const string ALL_PRODUCTS_CACHE_KEY = "ALL_PRODUCTS";
 
-        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService, IFilterService<ProductModel> filterService)
+        public ProductServiceImplementation(ProductDbContext productDbContext, ICacheService cacheService, IFilterService<ProductModel> filterService, IPublishEndpoint publishEndpoint)
         {
             this._productDbContext = productDbContext;
             this._cacheService = cacheService;
             this._filterService = filterService;
+            this._publishEndpoint = publishEndpoint;
         }
 
         public Task<ResponseDto> AddBulkProductsAsync(List<AddProductDto> productDtos)
@@ -85,6 +87,9 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
             await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
 
             var addedProductDto = product.ConvertProductToProductDtoExtensionVersion1();
+
+            /* Publish the message to the queue to notify the other micro services */
+            await this._publishEndpoint.Publish(message: addedProductDto);
 
             return new ResponseDto()
             {
@@ -253,6 +258,9 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
             await this._cacheService.RemoveDataAsync(key: $"PRODUCT_{id}");
             await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
 
+            /* Publish the message to the queue to notify the other micro services */
+            await this._publishEndpoint.Publish(message: product);
+
             return new ResponseDto()
             {
                 IsSuccess = true,
@@ -264,7 +272,7 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
 
         public async Task<ResponseDto> GetAllProductsAsync(string? columnName = null, string? filterKeyWord = null)
         {
-            var products = await this._productDbContext.Products.ToListAsync();
+            var products = await this._productDbContext.Products.AsNoTracking().ToListAsync();
 
             if (products is null)
             {
@@ -493,6 +501,9 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
             await this._cacheService.RemoveDataAsync(key: ALL_PRODUCTS_CACHE_KEY);
 
             var updatedProductDto = product.ConvertProductToProductDtoExtensionVersion1();
+
+            /* Publish the message to the queue to notify the other micro services */
+            await this._publishEndpoint.Publish(message: updatedProductDto);
 
             return new ResponseDto()
             {

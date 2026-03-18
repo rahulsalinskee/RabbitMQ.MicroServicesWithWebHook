@@ -1,7 +1,16 @@
+using Order.API.Cache;
 using Order.API.DataLayer;
 using Order.API.GlobalException;
 using Order.API.LogConfiguration;
+using Order.API.RabbitMQ;
+using Order.API.Repository.CacheServices.Implementations;
+using Order.API.Repository.CacheServices.Services;
+using Order.API.Repository.FilterServices.Implementations;
+using Order.API.Repository.FilterServices.Services;
+using Order.API.Repository.OrderServices.Implementations;
+using Order.API.Repository.OrderServices.Services;
 using Serilog;
+using OrderModel = Shared.Data.Models.OrderModel.Order;
 
 // Initialize logger first to capture startup errors
 Log.Logger = OrderLog.GenerateOrderLog();
@@ -18,11 +27,21 @@ try
     /* Register OrderDbContext */
     builder.Services.RegisterOrderDbContextExtension(configuration: builder.Configuration);
 
+    /* Register Cache */
+    builder.Services.ConfigureCacheExtension(configuration: builder.Configuration);
+
     // Add services to the container.
     builder.Services.AddControllers();
 
     // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
     builder.Services.AddOpenApi();
+
+    builder.Services.AddScoped<IOrderService, OrderImplementation>();
+    builder.Services.AddScoped<ICacheService, CacheImplementation>();
+    builder.Services.AddScoped<IFilterService<OrderModel>, FilterImplementation<OrderModel>>();
+
+    /* --- ADD MASS TRANSIT REGISTRATION HERE --- */
+    builder.Services.RegisterMassTransitExtension();
 
     var app = builder.Build();
 
