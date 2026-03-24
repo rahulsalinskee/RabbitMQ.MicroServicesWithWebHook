@@ -11,7 +11,7 @@ namespace Order.API.Repository.OrderServices.Services
 
         public Task<ResponseDto> AddOrderAsync(AddOrderDto addNewOrderDto);
 
-        public Task<(ResponseDto responseDto, OrderSummaryDto? orderSummaryDto)> GetOrderSummaryAsync();
+        public Task<(ResponseDto responseDto, OrderSummaryDto? orderSummaryDto)> GetOrderSummaryByIdAsync(int id);
 
         //public Task<ResponseDto> UpdateOrderAsync(int orderId, UpdateOrderDto updateOrderDto);
 

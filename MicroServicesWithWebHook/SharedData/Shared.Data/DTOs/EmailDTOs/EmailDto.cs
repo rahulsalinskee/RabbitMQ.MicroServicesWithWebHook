@@ -1,4 +1,6 @@
-﻿namespace Shared.Data.DTOs.EmailDTOs
+﻿using System.Text;
+
+namespace Shared.Data.DTOs.EmailDTOs
 {
     public record EmailDto
     {

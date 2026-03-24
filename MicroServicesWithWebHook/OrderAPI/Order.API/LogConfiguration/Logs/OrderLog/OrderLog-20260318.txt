@@ -16,3 +16,51 @@
  
 [2026-03-18 13:39:14.849 +05:30] [INF] [Order.API] HTTP GET /api/Order responded 400 in 2229.1071 ms
  
+[2026-03-18 17:49:07.447 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-03-18 17:49:11.698 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-03-18 17:49:11.823 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-03-18 17:49:11.827 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-03-18 17:49:11.920 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-18 17:49:11.924 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-03-18 17:49:11.928 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-03-18 17:50:49.613 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-03-18 17:50:51.465 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-03-18 17:50:51.504 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-03-18 17:50:51.507 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-03-18 17:50:51.560 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-18 17:50:51.563 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-03-18 17:50:51.565 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-03-18 17:50:56.345 +05:30] [INF] [Order.API] HTTP GET /openapi/v1.json responded 200 in 21.0732 ms
+ 
+[2026-03-18 17:52:50.222 +05:30] [WRN] [Order.API] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+ 
+[2026-03-18 17:54:19.312 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-03-18 17:54:21.115 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-03-18 17:54:21.157 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-03-18 17:54:21.160 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-03-18 17:54:21.208 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-18 17:54:21.210 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-03-18 17:54:21.212 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-03-18 17:54:40.561 +05:30] [WRN] [Order.API] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+ 

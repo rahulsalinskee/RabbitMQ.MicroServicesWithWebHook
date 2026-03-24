@@ -26,4 +26,13 @@ services:
     ports:
       - "5672:5672" # The standard AMQP port your code uses
       - "15672:15672" # The Web UI Management port
+    environment: 
+        RABBITMQ_DEFAULT_USER: guest 
+        RABBITMQ_DEFAULT_PASSWORD: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
     restart: always
+
+volumes:
+  rabbitmq_data:
+    driver: local

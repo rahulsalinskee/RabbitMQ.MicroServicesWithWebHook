@@ -6,7 +6,7 @@ using Product.API.Cache.ConfigurationCache;
 using Product.API.DataLayer;
 using Product.API.Exception;
 using Product.API.LogConfiguration;
-using Product.API.RabbitMQ;
+using Product.API.RabbitMqPublisher;
 using Product.API.Repository.CacheServices.Implementations;
 using Product.API.Repository.CacheServices.Services;
 using Product.API.Repository.FilterServices.Implementations;
@@ -65,8 +65,8 @@ try
     /* --- Register Filter Services & Implementations --- */
     builder.Services.AddScoped<IFilterService<Shared.Data.Models.ProductModel.Product>, FilterImplementation<Shared.Data.Models.ProductModel.Product>>();
 
-    /* Register MassTransit */
-    builder.Services.RegisterMassTransitExtension();
+    /* Register Product MassTransit as Publisher */
+    builder.Services.RegisterProductMassTransitExtension();
 
     var app = builder.Build();
 

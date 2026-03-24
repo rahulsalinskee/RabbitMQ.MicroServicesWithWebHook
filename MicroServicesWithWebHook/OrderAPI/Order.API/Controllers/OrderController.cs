@@ -31,6 +31,7 @@ namespace Order.API.Controllers
             }
         }
 
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetOrderById(int id)
         {
             var response = await this._orderService.GetOrderByIdAsync(orderId: id);
@@ -45,6 +46,7 @@ namespace Order.API.Controllers
             }
         }
 
+        [HttpPost]
         public async Task<IActionResult> CreateOrder([FromBody] AddOrderDto addOrderDto)
         {
             var response = await this._orderService.AddOrderAsync(addNewOrderDto: addOrderDto);

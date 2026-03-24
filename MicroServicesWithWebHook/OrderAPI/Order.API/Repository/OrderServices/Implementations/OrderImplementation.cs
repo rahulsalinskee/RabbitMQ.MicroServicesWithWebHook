@@ -70,7 +70,18 @@ namespace Order.API.Repository.OrderServices.Implementations
 
             var addedProductDto = order.ConvertOrderModelToOrderDtoExtension();
 
-            var response = await GetOrderSummaryAsync();
+            var response = await GetOrderSummaryByIdAsync(id: order.ID);
+
+            if (response.orderSummaryDto is null)
+            {
+                return new ResponseDto()
+                {
+                    IsSuccess = false,
+                    Result = null,
+                    Message = "Order placed, but failed to generate summary email because the Product ID does not exist in the local database.",
+                    When = DateTime.Now,
+                };
+            }
 
             OrderEmailBodyDto orderEmailBodyDto = new()
             {
@@ -222,15 +233,15 @@ namespace Order.API.Repository.OrderServices.Implementations
             };
         }
 
-        public async Task<(ResponseDto responseDto, OrderSummaryDto? orderSummaryDto)> GetOrderSummaryAsync()
+        public async Task<(ResponseDto responseDto, OrderSummaryDto? orderSummaryDto)> GetOrderSummaryByIdAsync(int id)
         {
             var order = await this._orderDbContext.Orders.AsNoTracking().FirstOrDefaultAsync();
 
             var products = await this._orderDbContext.Products.AsNoTracking().ToListAsync();
 
-            var productInformation = products.Find(product => product.ID == order!.ProductId);
+            var productInformation = products.Find(product => product.ID == order?.ProductId);
 
-            if (order is null)
+            if (order is null || productInformation is null)
             {
                 ApplicationError applicationError = new()
                 {
@@ -238,7 +249,7 @@ namespace Order.API.Repository.OrderServices.Implementations
                     Message = "Order Not Found!",
                 };
 
-                return 
+                return
                 (
                     responseDto: new ResponseDto()
                     {
@@ -246,7 +257,7 @@ namespace Order.API.Repository.OrderServices.Implementations
                         Result = null,
                         Message = applicationError.Message,
                         When = applicationError.When,
-                    }, 
+                    },
                     orderSummaryDto: null
                 );
             }

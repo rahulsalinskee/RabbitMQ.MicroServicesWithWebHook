@@ -2,7 +2,7 @@ using Order.API.Cache;
 using Order.API.DataLayer;
 using Order.API.GlobalException;
 using Order.API.LogConfiguration;
-using Order.API.RabbitMQ;
+using Order.API.RabbitMqConsumer.RegisterProductConsumer;
 using Order.API.Repository.CacheServices.Implementations;
 using Order.API.Repository.CacheServices.Services;
 using Order.API.Repository.FilterServices.Implementations;
@@ -41,7 +41,8 @@ try
     builder.Services.AddScoped<IFilterService<OrderModel>, FilterImplementation<OrderModel>>();
 
     /* --- ADD MASS TRANSIT REGISTRATION HERE --- */
-    builder.Services.RegisterMassTransitExtension();
+    builder.Services.RegisterProductConsumerMassTransitExtension();
+
 
     var app = builder.Build();
 
