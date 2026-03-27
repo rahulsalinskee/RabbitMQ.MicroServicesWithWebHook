@@ -7,6 +7,8 @@ namespace EmailNotification.WebHook.RabbitMqConsumer
     {
         private readonly HttpClient _httpClient;
 
+        private const string REQUEST_URI = "https://localhost:7298/email-webhook";
+
         public WebhookConsumer(HttpClient httpClient)
         {
             this._httpClient = httpClient;
@@ -14,7 +16,7 @@ namespace EmailNotification.WebHook.RabbitMqConsumer
 
         public async Task Consume(ConsumeContext<EmailDto> context)
         {
-            var result = await this._httpClient.PostAsJsonAsync(requestUri: "https://localhost:7298/email-webhook", value: new EmailDto()
+            var result = await this._httpClient.PostAsJsonAsync(requestUri: REQUEST_URI, value: new EmailDto()
             {
                 Title = context.Message.Title,
                 Content = context.Message.Content,

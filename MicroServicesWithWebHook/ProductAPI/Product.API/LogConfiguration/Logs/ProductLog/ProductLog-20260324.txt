@@ -1,0 +1,88 @@
+[2026-03-24 16:35:34.818 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-24 16:54:54.115 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-24 18:16:21.701 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-24 18:21:39.408 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-24 18:21:44.478 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-03-24 18:21:44.719 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-24 18:21:44.723 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-24 18:21:44.878 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-24 18:21:44.884 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-24 18:21:44.899 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-24 19:07:08.275 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 55.5091 ms
+ 
+[2026-03-24 19:08:20.037 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 1783.4093 ms
+ 
+[2026-03-24 19:08:20.137 +05:30] [INF] [Product.API] HTTP GET /favicon.ico responded 404 in 2.7421 ms
+ 
+[2026-03-24 19:21:03.543 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 4.7881 ms
+ 
+[2026-03-24 19:23:31.205 +05:30] [INF] [Product.API] HTTP POST /api/v1/Product responded 200 in 1019.7830 ms
+ 
+[2026-03-24 19:40:51.366 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-24 19:40:55.691 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-03-24 19:40:55.836 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-24 19:40:55.840 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-24 19:40:55.942 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-24 19:40:55.944 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-24 19:40:55.946 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-24 19:41:06.482 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 62.0802 ms
+ 
+[2026-03-24 19:41:27.442 +05:30] [ERR] [Product.API] Failed to create product: Product Is Duplicated!
+ 
+[2026-03-24 19:41:27.463 +05:30] [ERR] [Product.API] HTTP POST /api/v1/Product responded 500 in 1781.6240 ms
+ 
+[2026-03-24 20:52:24.489 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-24 20:52:28.256 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-03-24 20:52:28.990 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-24 20:52:29.030 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-24 20:52:29.234 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-24 20:52:29.513 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-24 20:52:30.025 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-24 20:52:47.076 +05:30] [INF] [Product.API] HTTP POST /api/v1/Product responded 200 in 3855.9228 ms
+ 
+[2026-03-24 20:53:19.173 +05:30] [INF] [Product.API] HTTP GET /api/v1/Product responded 200 in 156.0477 ms
+ 
+[2026-03-24 21:18:06.297 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-03-24 21:18:08.265 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-03-24 21:18:08.369 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-03-24 21:18:08.373 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-03-24 21:18:08.450 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-03-24 21:18:08.452 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-03-24 21:18:08.454 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-03-24 21:19:49.204 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 78.1933 ms
+ 
+[2026-03-24 21:21:42.243 +05:30] [INF] [Product.API] HTTP POST /api/v1/Product responded 200 in 2897.7058 ms
+ 
+[2026-03-24 21:28:00.691 +05:30] [INF] [Product.API] HTTP POST /api/v1/Product responded 200 in 59.1147 ms
+ 

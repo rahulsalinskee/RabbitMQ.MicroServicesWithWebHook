@@ -7,7 +7,8 @@ using EmailNotification.WebHook.RabbitMqConsumer;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHttpClient<IEmailService, EmailServiceImplementation>();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IEmailService, EmailServiceImplementation>();
 
 /* Register Web Hook Consumer */
 builder.Services.RegisterWebHookConsumerMassTransitExtension();

@@ -11,5 +11,10 @@ namespace Order.API.DataLayer
         public DbSet<Shared.Data.Models.OrderModel.Order> Orders { get; set; }
 
         public DbSet<Shared.Data.Models.ProductModel.Product> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Shared.Data.Models.ProductModel.Product>().Property(product => product.ID).ValueGeneratedNever();
+        }
     }
 }

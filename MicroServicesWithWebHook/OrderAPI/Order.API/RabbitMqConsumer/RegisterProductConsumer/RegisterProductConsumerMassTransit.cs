@@ -21,14 +21,21 @@ namespace Order.API.RabbitMqConsumer.RegisterProductConsumer
                         host.Password("guest");
                     });
 
-                    /* Queue for V1 consumer */
+                    /* 
+                    *  Queue for V1 consumer: Since We have added AddConsumer for ProductConsumerV1 (Line: 13), 
+                    *  We need a receive endpoint for it
+                    *  If We don't add it on the top, we don't need to add it here
+                    */
                     configurator.ReceiveEndpoint(queueName: "product-sync-queue-v1", configureEndpoint: endpointConfigurator =>
                     {
                         endpointConfigurator.PrefetchCount = 16;
                         endpointConfigurator.ConfigureConsumer<ProductConsumerV1>(context);
                     });
 
-                    /* Queue for V2 consumer */
+                    /* Queue for V2 consumer: Since We have added AddConsumer for ProductConsumerV2 (Line 14), 
+                    *  We need a receive endpoint for it
+                    *  If We don't add it on the top, we don't need to add it here
+                    */
                     configurator.ReceiveEndpoint(queueName: "product-sync-queue-v2", configureEndpoint: endpointConfigurator =>
                     {
                         endpointConfigurator.PrefetchCount = 16;

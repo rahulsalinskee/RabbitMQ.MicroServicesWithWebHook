@@ -452,7 +452,7 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
                 };
             }
 
-            var isDuplicatedProductName = await IsProductNameDuplicatedAsync(updateProductDto.Name, id);
+            var isDuplicatedProductName = await IsProductDuplicatedAsync(updateProductDto: updateProductDto, excludeProductId: id);
 
             if (isDuplicatedProductName)
             {
@@ -572,6 +572,19 @@ namespace Product.API.Repository.ProductServices.Version1.Implementations
         private async Task<bool> IsProductNameDuplicatedAsync(string productNameFromDto, int? excludeProductId = null)
         {
             var query = this._productDbContext.Products.Where(product => product.Name.ToLower() == productNameFromDto.ToLower());
+
+            /* If an ID is provided (like during an update), exclude it from the duplicate check */
+            if (excludeProductId.HasValue)
+            {
+                query = query.Where(product => product.ID != excludeProductId.Value);
+            }
+
+            return await query.AnyAsync();
+        }
+
+        private async Task<bool> IsProductDuplicatedAsync(UpdateProductDto updateProductDto, int? excludeProductId = null)
+        {
+            var query = this._productDbContext.Products.Where(product => product.Name.ToLower() == updateProductDto.Name.ToLower() && product.Price == updateProductDto.Price);
 
             /* If an ID is provided (like during an update), exclude it from the duplicate check */
             if (excludeProductId.HasValue)

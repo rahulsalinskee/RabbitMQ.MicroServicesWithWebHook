@@ -13,13 +13,16 @@ namespace EmailNotification.WebHook.RabbitMqConsumer
 
                 serviceAddMassTransit.UsingRabbitMq((context, configurator) =>
                 {
-                    configurator.Host(host: "rabbitmq://localhost", virtualHost: "/", configure: host =>
+                    configurator.Host(host: "localhost", virtualHost: "/", configure: host =>
                     {
                         host.Username("guest");
                         host.Password("guest");
                     });
 
-                    /* Queue for Web Hook Consumer */
+                    /* Queue for Web Hook consumer: Since We have added AddConsumer for WebhookConsumer (Line 12), 
+                    *  We need a receive endpoint for it
+                    *  If We don't add it on the top, we don't need to add it here
+                    */
                     configurator.ReceiveEndpoint(queueName: "email-webhook-queue", configureEndpoint: endpointConfigurator =>
                     {
                         endpointConfigurator.PrefetchCount = 16;
