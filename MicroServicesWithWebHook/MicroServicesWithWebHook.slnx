@@ -2,6 +2,9 @@
   <Folder Name="/APIGateway/">
     <Project Path="APIGateway/API.Gateway/API.Gateway.csproj" Id="054388e2-8a45-4bb8-8b81-1d0d3864b38a" />
   </Folder>
+  <Folder Name="/AuthenticationAPI/">
+    <Project Path="AuthenticationAPI/Authentication.API/Authentication.API.csproj" Id="74314b7b-7cad-4408-81e7-440516ba903f" />
+  </Folder>
   <Folder Name="/EmailNotificationWebHook/">
     <Project Path="EmailNotificationWebHook/EmailNotification.WebHook/EmailNotification.WebHook.csproj" />
   </Folder>
