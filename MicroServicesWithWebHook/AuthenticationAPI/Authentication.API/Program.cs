@@ -16,6 +16,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IJwtService, JwtImplementation>();
+builder.Services.AddScoped<ILoginService, LoginImplementation>();
+builder.Services.AddScoped<IRegisterService, RegisterImplementation>();
 
 var app = builder.Build();
 
