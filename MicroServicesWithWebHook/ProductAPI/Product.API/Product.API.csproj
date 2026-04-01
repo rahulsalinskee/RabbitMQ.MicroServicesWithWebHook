@@ -33,4 +33,8 @@
     <ProjectReference Include="..\..\SharedData\Shared.Data\Shared.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Authentication\" />
+  </ItemGroup>
+
 </Project>
