@@ -1,0 +1,40 @@
+[2026-04-01 21:25:05.122 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-01 21:25:08.815 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-01 21:25:08.836 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-01 21:25:10.067 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-01 21:25:10.121 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-01 21:25:10.126 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-01 21:25:10.250 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-01 21:25:10.253 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-01 21:25:10.256 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-01 21:34:25.519 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-01 21:34:27.848 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-01 21:34:27.862 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-01 21:34:28.911 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-01 21:34:28.912 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-01 21:34:28.914 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-01 21:34:28.998 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-01 21:34:29.000 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-01 21:34:29.002 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-01 21:35:24.387 +05:30] [INF] [Order.API] HTTP GET /openapi/v1.json responded 200 in 146.3662 ms
+ 
+[2026-04-01 21:36:25.293 +05:30] [INF] [Order.API] HTTP GET /openapi/v1.json responded 200 in 58.5175 ms
+ 

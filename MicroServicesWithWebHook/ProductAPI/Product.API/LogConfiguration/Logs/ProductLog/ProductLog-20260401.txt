@@ -1,0 +1,56 @@
+[2026-04-01 21:25:05.493 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-01 21:25:10.467 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-01 21:25:10.642 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-04-01 21:25:10.650 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-04-01 21:25:10.855 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-01 21:25:10.859 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-04-01 21:25:10.861 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-04-01 21:34:25.427 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-01 21:34:28.632 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-01 21:34:28.780 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-04-01 21:34:28.784 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-04-01 21:34:28.906 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-01 21:34:28.911 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-04-01 21:34:28.913 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-04-01 21:35:14.031 +05:30] [INF] [Product.API] HTTP GET /openapi/v1.json responded 200 in 201.5069 ms
+ 
+[2026-04-01 21:36:09.296 +05:30] [ERR] [Product.API] HTTP POST /api/v1/Product responded 500 in 6.7987 ms
+System.InvalidOperationException: The AuthorizationPolicy named: 'Admin' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData, IEnumerable`1 policies)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+ 
+[2026-04-01 21:36:09.360 +05:30] [ERR] [Product.API] Application Error occurred on Date & Time: "2026-04-01T21:36:09.3595600+05:30"
+System.InvalidOperationException: The AuthorizationPolicy named: 'Admin' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData, IEnumerable`1 policies)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Product.API.Exception.GlobalExceptionHandler.InvokeAsync(HttpContext httpContext) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\GlobalException\GlobalExceptionHandler.cs:line 20
+ 
+[2026-04-01 21:36:09.372 +05:30] [ERR] [Product.API] Application Error occurred with Message: The AuthorizationPolicy named: 'Admin' was not found.
+System.InvalidOperationException: The AuthorizationPolicy named: 'Admin' was not found.
+   at Microsoft.AspNetCore.Authorization.AuthorizationPolicy.CombineAsync(IAuthorizationPolicyProvider policyProvider, IEnumerable`1 authorizeData, IEnumerable`1 policies)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at Serilog.AspNetCore.RequestLoggingMiddleware.Invoke(HttpContext httpContext)
+   at Product.API.Exception.GlobalExceptionHandler.InvokeAsync(HttpContext httpContext) in G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API\GlobalException\GlobalExceptionHandler.cs:line 20
+ 
