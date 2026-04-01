@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Product.API.Repository.ProductServices.Version2.Services;
 using Product.API.ServerSideValidation;
@@ -9,6 +10,7 @@ namespace Product.API.Controllers.Product.Version2
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [ApiVersion("2.0")]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -21,6 +23,7 @@ namespace Product.API.Controllers.Product.Version2
         }
 
         #region Version 2
+        [Authorize(Policy = "User")]
         [HttpGet]
         [MapToApiVersion("2.0")]
         public async Task<IActionResult> GetAllProductsVersion2(string? columnName = null, string? filterKeyWord = null)
@@ -36,6 +39,7 @@ namespace Product.API.Controllers.Product.Version2
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
+        [Authorize(Policy = "User")]
         [HttpGet("{id}")]
         [MapToApiVersion("2.0")]
         public async Task<IActionResult> GetProductByIdVersion2(int id)
@@ -51,6 +55,7 @@ namespace Product.API.Controllers.Product.Version2
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         [ModelValidation]
         //[ValidateAntiForgeryToken]
@@ -69,6 +74,7 @@ namespace Product.API.Controllers.Product.Version2
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut("{id:int}")]
         [ModelValidation]
         //[ValidateAntiForgeryToken]
@@ -87,6 +93,7 @@ namespace Product.API.Controllers.Product.Version2
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete("{id:int}")]
         //[ValidateAntiForgeryToken]
         [MapToApiVersion("2.0")]

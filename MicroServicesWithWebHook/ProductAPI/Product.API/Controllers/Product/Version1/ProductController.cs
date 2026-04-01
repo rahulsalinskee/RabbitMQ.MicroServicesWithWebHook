@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Product.API.Repository.ProductServices.Version1.Services;
 using Product.API.ServerSideValidation;
@@ -9,6 +10,7 @@ namespace Product.API.Controllers.Product.Version1
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [ApiVersion("1.0")]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -21,6 +23,7 @@ namespace Product.API.Controllers.Product.Version1
         }
 
         #region Version 1
+        [AllowAnonymous]
         [HttpGet]
         [MapToApiVersion("1.0")]
         public async Task<IActionResult> GetAllProductsVersion1([FromQuery] string? filterOnColumn, [FromQuery] string? filterKeyWord)
@@ -36,6 +39,7 @@ namespace Product.API.Controllers.Product.Version1
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id:int}")]
         [MapToApiVersion("1.0")]
         public async Task<IActionResult> GetProductByIdVersion1(int id)
@@ -51,6 +55,7 @@ namespace Product.API.Controllers.Product.Version1
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPost]
         [ModelValidation]
         //[ValidateAntiForgeryToken]
@@ -69,6 +74,7 @@ namespace Product.API.Controllers.Product.Version1
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpPut("{id:int}")]
         [ModelValidation]
         //[ValidateAntiForgeryToken]
@@ -87,6 +93,7 @@ namespace Product.API.Controllers.Product.Version1
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
+        [Authorize(Policy = "Admin")]
         [HttpDelete("{id:int}")]
         //[ValidateAntiForgeryToken]
         [MapToApiVersion("1.0")]
