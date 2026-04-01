@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Product.API.AttackPrevention.CORS;
 using Product.API.AttackPrevention.CSRF;
 using Product.API.AttackPrevention.RateLimitForDDoS;
+using Product.API.Authentication;
 using Product.API.Cache.ConfigurationCache;
 using Product.API.DataLayer;
 using Product.API.Exception;
@@ -68,6 +69,9 @@ try
     /* Register Product MassTransit as Publisher */
     builder.Services.RegisterProductMassTransitExtension();
 
+    /* Register JWT Authentication */
+    builder.Services.AddJwtAuthenticationExtension(configuration: builder.Configuration);
+
     var app = builder.Build();
 
     var versionDescriptionProviders = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
@@ -108,6 +112,7 @@ try
     app.UseRateLimiter();
     /* --- Enable Rate Limiting MiddleWare : END --- */
 
+    app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();
     app.Run();

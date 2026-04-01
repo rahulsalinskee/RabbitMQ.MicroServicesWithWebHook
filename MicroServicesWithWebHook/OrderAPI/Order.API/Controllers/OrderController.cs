@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Order.API.Repository.OrderServices.Services;
 using Shared.Data.DTOs.OrderDTOs;
@@ -7,6 +7,7 @@ namespace Order.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OrderController : ControllerBase
     {
         private readonly IOrderService _orderService;
@@ -17,9 +18,9 @@ namespace Order.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetOrders()
+        public async Task<IActionResult> GetOrders([FromQuery] string filterColumnName, [FromQuery] string filterValue)
         {
-            var response = await this._orderService.GetAllOrdersAsync();
+            var response = await this._orderService.GetAllOrdersAsync(columnName: filterColumnName, filterValue: filterValue);
 
             if (response.IsSuccess)
             {

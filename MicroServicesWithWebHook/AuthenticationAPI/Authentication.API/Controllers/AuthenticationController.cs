@@ -1,5 +1,4 @@
 ﻿using Authentication.API.Repositories.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Data.DTOs.AuthenticationDTOs;
 

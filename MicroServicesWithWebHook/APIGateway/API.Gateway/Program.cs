@@ -35,8 +35,6 @@ app.UseAuthorization();
 /* Map YARP Middleware */
 app.MapReverseProxy();
 
-app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

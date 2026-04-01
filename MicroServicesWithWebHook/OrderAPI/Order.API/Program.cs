@@ -1,3 +1,4 @@
+using Order.API.Authentication;
 using Order.API.Cache;
 using Order.API.DataLayer;
 using Order.API.GlobalException;
@@ -43,6 +44,8 @@ try
     /* --- ADD MASS TRANSIT REGISTRATION HERE --- */
     builder.Services.RegisterProductConsumerMassTransitExtension();
 
+    /* --- ADD JWT AUTHENTICATION REGISTRATION HERE --- */
+    builder.Services.AddJwtAuthenticationExtension(configuration: builder.Configuration);
 
     var app = builder.Build();
 
@@ -59,6 +62,8 @@ try
     app.UseMiddleware<GlobalExceptionHandler>();
     app.UseHttpsRedirection();
     app.UseSerilogRequestLogging(); // Logs HTTP requests automatically
+
+    app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();
     app.Run();

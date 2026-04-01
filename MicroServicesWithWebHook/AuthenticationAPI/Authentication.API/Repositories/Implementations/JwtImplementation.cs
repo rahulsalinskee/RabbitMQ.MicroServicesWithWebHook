@@ -24,7 +24,7 @@ namespace Authentication.API.Repositories.Implementations
             IList<Claim>? claims = new List<Claim>();
             claims.Add(item: new Claim(type: JwtRegisteredClaimNames.Sub, value: user.Id.ToString()));
             claims.Add(item: new Claim(type: ClaimTypes.Name, value: user.UserName));
-            claims.Add(item: new Claim(type: ClaimTypes.Role, value: user.Role));
+            claims.Add(item: new Claim(type: "Role", value: user.Role));
             claims.Add(item: new Claim(type: JwtRegisteredClaimNames.Jti, value: Guid.NewGuid().ToString()));
 
             JwtSecurityToken jwtSecurityToken = new
