@@ -18,7 +18,7 @@ namespace Authentication.API.Repositories.Implementations
 
         public string GenerateToken(User user)
         {
-            SymmetricSecurityKey symmetricSecurityKey = new(Encoding.UTF8.GetBytes(_configuration["JWT:SecreteKey"]));
+            SymmetricSecurityKey symmetricSecurityKey = new(Encoding.UTF8.GetBytes(_configuration["JWT:Key"]!));
             SigningCredentials signingCredentials = new(key: symmetricSecurityKey, algorithm: SecurityAlgorithms.HmacSha256);
 
             IList<Claim>? claims = new List<Claim>();
@@ -29,8 +29,8 @@ namespace Authentication.API.Repositories.Implementations
 
             JwtSecurityToken jwtSecurityToken = new
             (
-                issuer: _configuration["JWT:ValidIssuer"],
-                audience: _configuration["JWT:ValidAudience"],
+                issuer: _configuration["JWT:Issuer"],
+                audience: _configuration["JWT:Audience"],
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(15),
                 signingCredentials: signingCredentials

@@ -2,17 +2,18 @@
 using Microsoft.AspNetCore.Identity;
 using Shared.Data.DTOs.AuthenticationDTOs;
 using Shared.Data.DTOs.ResponseDTOs;
+using Shared.Data.Models.AuthenticationModel;
 using Shared.Data.Models.ErrorModel;
 
 namespace Authentication.API.Repositories.Implementations
 {
     public class RegisterImplementation : IRegisterService
     {
-        private readonly UserManager<IdentityUser> _identityUserManager;
+        private readonly UserManager<User> _userManager;
 
-        public RegisterImplementation(UserManager<IdentityUser> identityUserManager)
+        public RegisterImplementation(UserManager<User> userManager)
         {
-            this._identityUserManager = identityUserManager;
+            this._userManager = userManager;
         }
 
         public async Task<ResponseDto> RegisterNewUserAsync(RegisterDto registerDto)
@@ -34,19 +35,21 @@ namespace Authentication.API.Repositories.Implementations
                 };
             }
 
-            IdentityUser identityUser = new()
+            User identityUser = new()
             {
                 Email = registerDto.Email,
-                UserName = registerDto.UserName
+                UserName = registerDto.UserName,
+                Role = registerDto.Role ?? "User"
             };
 
-            var addNewUserResponse = await this._identityUserManager.CreateAsync(user: identityUser, password: registerDto.Password);
+            
+            var addNewUserResponse = await this._userManager.CreateAsync(user: identityUser, password: registerDto.Password);
 
             if (addNewUserResponse.Succeeded)
             {
                 if (registerDto.Role is not null)
                 {
-                    var identityUserResult = await this._identityUserManager.AddToRoleAsync(user: identityUser, role: registerDto.Role);
+                    var identityUserResult = await this._userManager.AddToRoleAsync(user: identityUser, role: registerDto.Role);
 
                     if (identityUserResult.Succeeded)
                     {
@@ -72,6 +75,7 @@ namespace Authentication.API.Repositories.Implementations
                         Message = userRegisteredSuccessfully.Message
                     };
                 }
+
                 ApplicationError error = new()
                 {
                     Message = "User registered successfully!",

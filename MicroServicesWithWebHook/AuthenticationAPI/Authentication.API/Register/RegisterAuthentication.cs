@@ -24,7 +24,7 @@ namespace Authentication.API.Register
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = configuration["JWT:Issuer"],
                     ValidAudience = configuration["JWT:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(key: Encoding.UTF8.GetBytes("JWT:SecreteKey"))
+                    IssuerSigningKey = new SymmetricSecurityKey(key: Encoding.UTF8.GetBytes("JWT:Key"))
                 };
             });
         }

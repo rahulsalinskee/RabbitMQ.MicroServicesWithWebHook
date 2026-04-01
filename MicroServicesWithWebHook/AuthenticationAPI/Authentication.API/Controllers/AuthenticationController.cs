@@ -39,7 +39,7 @@ namespace Authentication.API.Controllers
             {
                 return Ok(loginResponse);
             }
-            return BadRequest(loginResponse);
+            return Unauthorized(loginResponse);
         }
     }
 }

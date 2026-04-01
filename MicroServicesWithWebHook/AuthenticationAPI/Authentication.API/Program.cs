@@ -2,12 +2,17 @@ using Authentication.API.DataContext;
 using Authentication.API.Register;
 using Authentication.API.Repositories.Implementations;
 using Authentication.API.Repositories.Services;
+using Microsoft.AspNetCore.Identity;
+using Shared.Data.Models.AuthenticationModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.RegisterAuthenticationServiceExtension(configuration: builder.Configuration);
 
 builder.Services.RegisterAuthenticationDbContextExtension(configuration: builder.Configuration);
+
+/* ADD Add Identity */
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AuthenticationDbContext>().AddDefaultTokenProviders();
 
 // Add services to the container.
 
