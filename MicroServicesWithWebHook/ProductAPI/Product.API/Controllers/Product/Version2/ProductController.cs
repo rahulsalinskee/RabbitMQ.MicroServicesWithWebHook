@@ -23,7 +23,7 @@ namespace Product.API.Controllers.Product.Version2
         }
 
         #region Version 2
-        [Authorize(Policy = "User")]
+        [AllowAnonymous]
         [HttpGet]
         [MapToApiVersion("2.0")]
         public async Task<IActionResult> GetAllProductsVersion2(string? columnName = null, string? filterKeyWord = null)
@@ -39,7 +39,7 @@ namespace Product.API.Controllers.Product.Version2
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
-        [Authorize(Policy = "User")]
+        [AllowAnonymous]
         [HttpGet("{id}")]
         [MapToApiVersion("2.0")]
         public async Task<IActionResult> GetProductByIdVersion2(int id)

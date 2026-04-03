@@ -55,15 +55,20 @@ namespace Authentication.API.Repositories.Implementations
                     {
                         return new ResponseDto()
                         {
-                            Result = null,
+                            Result = identityUserResult,
                             IsSuccess = true,
                             When = DateTime.UtcNow,
                             Message = "User registered successfully!"
                         };
                     }
-                    ApplicationError userRegisteredSuccessfully = new()
+
+                    /* IF IT FAILS: Extract the actual Identity errors */
+                    var identityErrors = string.Join(", ", addNewUserResponse.Errors.Select(error => error.Description));
+
+                    ApplicationError newUserError = new()
                     {
-                        Message = "User registered successfully!",
+                        // Append the specific Identity errors to your message
+                        Message = $"Failed to register user! Reasons: {identityErrors}",
                         When = DateTime.UtcNow
                     };
 
@@ -71,14 +76,14 @@ namespace Authentication.API.Repositories.Implementations
                     {
                         Result = null,
                         IsSuccess = false,
-                        When = userRegisteredSuccessfully.When,
-                        Message = userRegisteredSuccessfully.Message
+                        When = newUserError.When,
+                        Message = newUserError.Message
                     };
                 }
 
                 ApplicationError error = new()
                 {
-                    Message = "User registered successfully!",
+                    Message = "User is not registered!",
                     When = DateTime.UtcNow
                 };
 
@@ -90,6 +95,7 @@ namespace Authentication.API.Repositories.Implementations
                     Message = error.Message
                 };
             }
+
             ApplicationError addNewUserError = new()
             {
                 Message = "Failed to register user!",

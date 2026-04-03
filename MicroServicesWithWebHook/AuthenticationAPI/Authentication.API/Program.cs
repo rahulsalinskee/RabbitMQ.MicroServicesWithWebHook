@@ -26,10 +26,33 @@ builder.Services.AddScoped<IRegisterService, RegisterImplementation>();
 
 var app = builder.Build();
 
+/* --- ADDED THIS BLOCK TO SEED ROLES --- */
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        // Execute the seeder asynchronously 
+        await RoleSeeder.SeedRoleAsyncExtension(services);
+    }
+    catch (Exception exception)
+    {
+        // Log any errors that occur during the database seeding process
+        var logger = services.GetRequiredService<ILogger<Program>>();
+        logger.LogError(exception, "An error occurred while seeding roles to the database.");
+    }
+}
+/* ------------------------------------ */
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+
+    app.UseSwaggerUI(option =>
+    {
+        option.SwaggerEndpoint(url: "/openapi/v1.json", name: "Authentication API");
+    });
 }
 
 app.UseHttpsRedirection();

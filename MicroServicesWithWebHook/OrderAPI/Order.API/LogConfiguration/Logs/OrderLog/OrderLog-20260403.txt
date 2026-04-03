@@ -1,0 +1,36 @@
+[2026-04-03 07:19:44.794 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-03 07:19:49.371 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-03 07:19:49.468 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-03 07:19:50.957 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-03 07:19:50.973 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-03 07:19:51.152 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-03 07:19:51.165 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-03 07:19:51.180 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-03 07:19:56.506 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-03 07:23:15.697 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-03 07:23:19.373 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-03 07:23:19.402 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-03 07:23:20.591 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-03 07:23:20.650 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-03 07:23:20.803 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-03 07:23:20.806 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-03 07:23:20.808 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-03 07:23:22.916 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 

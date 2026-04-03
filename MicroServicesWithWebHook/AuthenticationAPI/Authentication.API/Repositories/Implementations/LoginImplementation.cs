@@ -37,7 +37,7 @@ namespace Authentication.API.Repositories.Implementations
                 };
             }
 
-            var userDetail = await this._userManager.FindByEmailAsync(loginDto.UserName);
+            var userDetail = await this._userManager.FindByNameAsync(loginDto.UserName);
 
             if (userDetail is not null)
             {

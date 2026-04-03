@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
-using Microsoft.OpenApi;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Product.API.Version
@@ -23,7 +23,7 @@ namespace Product.API.Version
         {
             foreach (var description in this._apiVersionDescriptionProvider.ApiVersionDescriptions)
             {
-                CreateVersionInformation(description: description);
+                options.SwaggerDoc(name: description.GroupName, info: CreateVersionInformation(description: description));
             }
         }
 

@@ -38,3 +38,21 @@
  
 [2026-04-01 21:36:25.293 +05:30] [INF] [Order.API] HTTP GET /openapi/v1.json responded 200 in 58.5175 ms
  
+[2026-04-01 22:16:32.446 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-01 22:16:35.665 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-01 22:16:35.680 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-01 22:16:36.983 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-01 22:16:37.003 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-01 22:16:37.006 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-01 22:16:37.110 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-01 22:16:37.114 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-01 22:16:37.116 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 

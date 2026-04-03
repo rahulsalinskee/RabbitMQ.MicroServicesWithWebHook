@@ -4,12 +4,9 @@ namespace Shared.Data.Models.AuthenticationModel
 {
     public class User : IdentityUser
     {
-        public new int Id { get; set; }
-
-        public new string UserName { get; set; } = string.Empty;
-
-        public string Password { get; set; } = string.Empty;
-
+        /* IdentityUser automatically provides Id (as a string), UserName, Email, etc.
+        *  It also handles password hashing automatically.
+        */
         public string Role { get; set; } = "User";
     }
 }

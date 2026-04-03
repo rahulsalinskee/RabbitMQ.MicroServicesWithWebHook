@@ -1,4 +1,5 @@
 using Order.API.Authentication;
+using Order.API.Authorization;
 using Order.API.Cache;
 using Order.API.DataLayer;
 using Order.API.GlobalException;
@@ -34,8 +35,7 @@ try
     // Add services to the container.
     builder.Services.AddControllers();
 
-    // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-    builder.Services.AddOpenApi();
+    builder.Services.AddSwaggerGenAuthorizationExtension();
 
     builder.Services.AddScoped<IOrderService, OrderImplementation>();
     builder.Services.AddScoped<ICacheService, CacheImplementation>();
@@ -52,7 +52,7 @@ try
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
-        app.MapOpenApi();
+        app.UseSwagger();
         app.UseSwaggerUI(option =>
         {
             option.SwaggerEndpoint(url: "/openapi/v1.json", name: "Order API V1");

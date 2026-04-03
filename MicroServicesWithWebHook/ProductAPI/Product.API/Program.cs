@@ -3,6 +3,7 @@ using Product.API.AttackPrevention.CORS;
 using Product.API.AttackPrevention.CSRF;
 using Product.API.AttackPrevention.RateLimitForDDoS;
 using Product.API.Authentication;
+using Product.API.Authorization;
 using Product.API.Cache.ConfigurationCache;
 using Product.API.DataLayer;
 using Product.API.Exception;
@@ -41,10 +42,7 @@ try
     /* Register Version Services FIRST so OpenAPI can discover the endpoints */
     builder.Services.RegisterApiVersionExtension();
 
-    // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-    // Use LOWERCASE to exactly match the GroupNameFormat "'v'VVV" (v1, v2)
-    builder.Services.AddOpenApi("v1");
-    builder.Services.AddOpenApi("v2");
+    builder.Services.AddSwaggerGenAuthorizationExtension();
 
     /* Register Rate Limiting Services */
     builder.Services.AddRateLimitingServicesExtension();
@@ -79,16 +77,15 @@ try
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
-        app.MapOpenApi();
+        app.UseSwagger();
         app.UseSwaggerUI(option =>
         {
             /* Iterate over the API versions to generate the correct endpoint URLs */
             foreach (var description in versionDescriptionProviders.ApiVersionDescriptions)
             {
-                /* /openapi/{group}.json */
                 option.SwaggerEndpoint
                 (
-                    url: $"/openapi/{description.GroupName}.json", name: $"Product API {description.GroupName.ToUpperInvariant()}"
+                    url: $"/swagger/{description.GroupName}/swagger.json", name: $"Product API {description.GroupName.ToUpperInvariant()}"
                 );
             }
         });
