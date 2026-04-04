@@ -1,0 +1,50 @@
+[2026-04-04 06:47:01.753 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-04 06:47:13.041 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-04 06:47:13.293 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-04-04 06:47:13.312 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-04-04 06:47:13.582 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-04 06:47:13.595 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-04-04 06:47:13.599 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-04-04 06:48:18.946 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-04 06:48:31.385 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-04 06:48:31.443 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-04-04 06:48:31.647 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-04-04 06:48:32.193 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-04 06:48:32.227 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-04-04 06:48:32.293 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-04-04 07:09:12.443 +05:30] [INF] [Product.API] HTTP POST /api/v1/Product responded 401 in 461.1538 ms
+ 
+[2026-04-04 07:22:05.542 +05:30] [INF] [Product.API] HTTP POST /api/v1/Product responded 200 in 3545.9532 ms
+ 
+[2026-04-04 07:34:16.113 +05:30] [INF] [Product.API] HTTP POST /api/v1/Product responded 200 in 154.8471 ms
+ 
+[2026-04-04 07:38:09.257 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-04 07:38:15.091 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-04 07:38:15.326 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-04-04 07:38:15.344 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-04-04 07:38:15.545 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-04 07:38:15.596 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-04-04 07:38:15.600 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-04-04 12:37:52.105 +05:30] [INF] [Product.API] HTTP POST /api/v1/Product responded 403 in 538.5496 ms
+ 

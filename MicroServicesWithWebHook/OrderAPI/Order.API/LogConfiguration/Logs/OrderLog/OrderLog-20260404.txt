@@ -1,0 +1,62 @@
+[2026-04-04 06:47:01.527 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-04 06:47:10.540 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-04 06:47:10.829 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-04 06:47:12.930 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-04 06:47:13.096 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-04 06:47:13.117 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-04 06:47:13.286 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-04 06:47:13.297 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-04 06:47:13.318 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-04 06:48:18.886 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-04 06:48:27.721 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-04 06:48:27.939 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-04 06:48:31.440 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-04 06:48:31.608 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-04 06:48:32.139 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-04 06:48:32.229 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-04 06:48:32.286 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-04 06:48:32.306 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-04 07:22:05.974 +05:30] [INF] [Order.API] Product Created: Shared.Data.DTOs.ProductDTOs.Version1.ProductDto
+ 
+[2026-04-04 07:22:08.014 +05:30] [INF] [Order.API] Successfully synced product Hair Color - Black to local Order Database.
+ 
+[2026-04-04 07:34:16.111 +05:30] [INF] [Order.API] Product Created: Shared.Data.DTOs.ProductDTOs.Version1.ProductDto
+ 
+[2026-04-04 07:34:16.280 +05:30] [INF] [Order.API] Successfully synced product Hair Color - Golden to local Order Database.
+ 
+[2026-04-04 07:38:09.271 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-04 07:38:13.847 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-04 07:38:13.865 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-04 07:38:15.420 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-04 07:38:15.486 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-04 07:38:15.505 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-04 07:38:15.667 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-04 07:38:15.672 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-04 07:38:15.674 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 

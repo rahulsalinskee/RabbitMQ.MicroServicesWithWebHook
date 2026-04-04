@@ -55,7 +55,7 @@ namespace Product.API.Controllers.Product.Version2
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
-        [Authorize(Policy = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ModelValidation]
         //[ValidateAntiForgeryToken]
@@ -74,7 +74,7 @@ namespace Product.API.Controllers.Product.Version2
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
-        [Authorize(Policy = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id:int}")]
         [ModelValidation]
         //[ValidateAntiForgeryToken]
@@ -93,7 +93,7 @@ namespace Product.API.Controllers.Product.Version2
             return StatusCode(StatusCodes.Status500InternalServerError, response);
         }
 
-        [Authorize(Policy = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id:int}")]
         //[ValidateAntiForgeryToken]
         [MapToApiVersion("2.0")]

@@ -34,3 +34,39 @@
  
 [2026-04-03 07:23:22.916 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
  
+[2026-04-03 17:20:42.697 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-03 17:20:49.103 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-03 17:20:49.221 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-03 17:20:51.495 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-03 17:20:51.501 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-03 17:20:51.675 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-03 17:20:51.827 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-03 17:20:51.853 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-03 17:20:57.759 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-03 17:46:13.154 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-03 17:46:17.091 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-03 17:46:17.140 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-03 17:46:18.390 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-03 17:46:18.405 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-03 17:46:18.552 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-03 17:46:18.558 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-03 17:46:18.561 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-03 17:46:20.529 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
