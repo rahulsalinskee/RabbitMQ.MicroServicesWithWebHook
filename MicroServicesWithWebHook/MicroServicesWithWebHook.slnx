@@ -5,6 +5,13 @@
   <Folder Name="/AuthenticationAPI/">
     <Project Path="AuthenticationAPI/Authentication.API/Authentication.API.csproj" Id="74314b7b-7cad-4408-81e7-440516ba903f" />
   </Folder>
+  <Folder Name="/BuildingBlocks/" />
+  <Folder Name="/BuildingBlocks/BuildingBlocksExceptions/">
+    <Project Path="BuildingBlocks/BuildingBlocksExceptions/BuildingBlocks.Exceptions/BuildingBlocks.Exceptions.csproj" Id="5691304f-2da2-48ea-b0b1-b9da0a946e3f" />
+  </Folder>
+  <Folder Name="/BuildingBlocks/BuildingBlocksLogging/">
+    <Project Path="BuildingBlocks/BuildingBlocksLogging/BuildingBlocks.Logging/BuildingBlocks.Logging.csproj" Id="15d6e4a0-84c4-434f-90c6-71198cc5aa1c" />
+  </Folder>
   <Folder Name="/EmailNotificationWebHook/">
     <Project Path="EmailNotificationWebHook/EmailNotification.WebHook/EmailNotification.WebHook.csproj" />
   </Folder>

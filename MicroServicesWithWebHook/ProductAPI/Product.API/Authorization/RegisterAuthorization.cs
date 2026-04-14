@@ -21,7 +21,7 @@ namespace Product.API.Authorization
                 options.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
-                        new OpenApiSecurityScheme
+                        new OpenApiSecurityScheme()
                         {
                             Reference = new OpenApiReference
                             {

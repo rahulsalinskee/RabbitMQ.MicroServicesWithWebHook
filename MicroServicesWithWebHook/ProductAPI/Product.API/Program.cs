@@ -1,3 +1,5 @@
+using BuildingBlocks.Exceptions.Extensions;
+using BuildingBlocks.Logging.SeriLogConfiguration;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Product.API.AttackPrevention.CORS;
 using Product.API.AttackPrevention.CSRF;
@@ -6,8 +8,6 @@ using Product.API.Authentication;
 using Product.API.Authorization;
 using Product.API.Cache.ConfigurationCache;
 using Product.API.DataLayer;
-using Product.API.Exception;
-using Product.API.LogConfiguration;
 using Product.API.RabbitMqPublisher;
 using Product.API.Repository.CacheServices.Implementations;
 using Product.API.Repository.CacheServices.Services;
@@ -18,8 +18,8 @@ using Serilog;
 using ProductServiceVersion1 = Product.API.Repository.ProductServices.Version1;
 using ProductServiceVersion2 = Product.API.Repository.ProductServices.Version2;
 
-// Initialize logger first to capture startup errors
-Log.Logger = ProductLog.GenerateProductLog();
+// 1. Initialize a basic bootstrap logger to catch startup errors
+Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
 
 try
 {
@@ -27,8 +27,11 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-    /* Integrate Serilog with the ASP.NET Core host */
-    builder.Host.UseSerilog();
+    /* 2. Centralized Logging (Replaces the old ProductLog and local UseSerilog) */
+    builder.Host.UseSharedSerilogExtension(applicationName: "Product.API");
+
+    /* 3. Centralized Exception Handling - Service Registration */
+    builder.Services.AddGlobalExceptionHandlerExtension();
 
     /* Register ProductDbContext */
     builder.Services.RegisterProductDbContextExtension(configuration: builder.Configuration);
@@ -91,7 +94,10 @@ try
         });
     }
 
-    app.UseMiddleware<GlobalExceptionHandler>();
+    /* 4. Centralized Exception Handling - Pipeline Middleware */
+    /* Replaces app.UseMiddleware<GlobalExceptionHandler>(); */
+    app.UseGlobalExceptionHandlerExtension(); 
+    
     app.UseHttpsRedirection();
     app.UseSerilogRequestLogging(); /* Logs HTTP requests automatically */
 
