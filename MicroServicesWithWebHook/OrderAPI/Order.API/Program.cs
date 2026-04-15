@@ -23,7 +23,9 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-    /* Integrate Serilog with the ASP.NET Core host */
+    /* 2. Tell ASP.NET Core to use the global Serilog instance we just configured
+    *  Centralized Logging (Replaces the old ProductLog and local UseSerilog) 
+    */
     builder.Host.UseSerilog();
 
     /* 3. Centralized Exception Handling - Service Registration */
