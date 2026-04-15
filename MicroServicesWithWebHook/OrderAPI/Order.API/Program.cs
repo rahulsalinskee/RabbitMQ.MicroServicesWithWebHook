@@ -1,9 +1,9 @@
+using BuildingBlocks.Exceptions.Extensions;
+using BuildingBlocks.Logging.LogFactory;
 using Order.API.Authentication;
 using Order.API.Authorization;
 using Order.API.Cache;
 using Order.API.DataLayer;
-using Order.API.GlobalException;
-using Order.API.LogConfiguration;
 using Order.API.RabbitMqConsumer.RegisterProductConsumer;
 using Order.API.Repository.CacheServices.Implementations;
 using Order.API.Repository.CacheServices.Services;
@@ -14,8 +14,8 @@ using Order.API.Repository.OrderServices.Services;
 using Serilog;
 using OrderModel = Shared.Data.Models.OrderModel.Order;
 
-// Initialize logger first to capture startup errors
-Log.Logger = OrderLog.GenerateOrderLog();
+/* 1. Initialize a basic bootstrap logger to catch startup errors */
+Log.Logger = SharedLogFactory.GenerateSharedLogger(applicationName: "Order.API");
 
 try
 {
@@ -25,6 +25,9 @@ try
 
     /* Integrate Serilog with the ASP.NET Core host */
     builder.Host.UseSerilog();
+
+    /* 3. Centralized Exception Handling - Service Registration */
+    builder.Services.AddGlobalExceptionHandlerExtension();
 
     /* Register OrderDbContext */
     builder.Services.RegisterOrderDbContextExtension(configuration: builder.Configuration);
@@ -59,13 +62,18 @@ try
         });
     }
 
-    app.UseMiddleware<GlobalExceptionHandler>();
+    /* 4. Centralized Exception Handling - Pipeline Middleware */
+    /* Replaces app.UseMiddleware<GlobalExceptionHandler>(); */
+    app.UseGlobalExceptionHandlerExtension();
+
     app.UseHttpsRedirection();
     app.UseSerilogRequestLogging(); // Logs HTTP requests automatically
 
     app.UseAuthentication();
     app.UseAuthorization();
+
     app.MapControllers();
+
     app.Run();
 }
 catch (Exception exception) when (exception is not HostAbortedException)

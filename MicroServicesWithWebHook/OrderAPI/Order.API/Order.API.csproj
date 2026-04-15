@@ -35,6 +35,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\BuildingBlocks\BuildingBlocksExceptions\BuildingBlocks.Exceptions\BuildingBlocks.Exceptions.csproj" />
+		<ProjectReference Include="..\..\BuildingBlocks\BuildingBlocksLogging\BuildingBlocks.Logging\BuildingBlocks.Logging.csproj" />
 		<ProjectReference Include="..\..\SharedData\Shared.Data\Shared.Data.csproj" />
 	</ItemGroup>
 
