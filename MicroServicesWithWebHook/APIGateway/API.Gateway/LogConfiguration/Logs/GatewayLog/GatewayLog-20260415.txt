@@ -1,0 +1,28 @@
+[2026-04-15 17:25:15.868 +05:30] [INF] [Gateway] Starting Gateway.API...
+ 
+[2026-04-15 17:25:18.023 +05:30] [INF] [Gateway] Loading proxy data from config.
+ 
+[2026-04-15 17:25:18.994 +05:30] [INF] [Gateway] Now listening on: https://localhost:7199
+ 
+[2026-04-15 17:25:18.999 +05:30] [INF] [Gateway] Now listening on: http://localhost:5252
+ 
+[2026-04-15 17:25:19.108 +05:30] [INF] [Gateway] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-15 17:25:19.111 +05:30] [INF] [Gateway] Hosting environment: Development
+ 
+[2026-04-15 17:25:19.120 +05:30] [INF] [Gateway] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\APIGateway\API.Gateway
+ 
+[2026-04-15 18:32:40.848 +05:30] [INF] [Gateway] Starting Gateway.API...
+ 
+[2026-04-15 18:32:43.523 +05:30] [INF] [Gateway] Loading proxy data from config.
+ 
+[2026-04-15 18:32:44.809 +05:30] [INF] [Gateway] Now listening on: https://localhost:7199
+ 
+[2026-04-15 18:32:44.837 +05:30] [INF] [Gateway] Now listening on: http://localhost:5252
+ 
+[2026-04-15 18:32:44.992 +05:30] [INF] [Gateway] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-15 18:32:45.033 +05:30] [INF] [Gateway] Hosting environment: Development
+ 
+[2026-04-15 18:32:45.053 +05:30] [INF] [Gateway] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\APIGateway\API.Gateway
+ 

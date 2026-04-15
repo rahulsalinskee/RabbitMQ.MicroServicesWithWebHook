@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BuildingBlocks.Logging.LoggingInterceptor;
+using Microsoft.EntityFrameworkCore;
 
 namespace Order.API.DataLayer
 {
@@ -6,11 +7,18 @@ namespace Order.API.DataLayer
     {
         private const string CONNECTION_STRING = "OrderDbContextConnectionString";
 
+
         public static IServiceCollection RegisterOrderDbContextExtension(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<OrderDbContext>(options =>
+            /* Register the logging interceptor */
+            services.AddSingleton<CrudLoggingInterceptor>();
+
+            services.AddDbContext<OrderDbContext>((serviceProvider, options) =>
             {
-                options.UseSqlServer(connectionString: configuration.GetConnectionString(name: CONNECTION_STRING));
+                /* Resolve The Logging Interceptor */
+                var interceptor = serviceProvider.GetRequiredService<CrudLoggingInterceptor>();
+
+                options.UseSqlServer(connectionString: configuration.GetConnectionString(name: CONNECTION_STRING)).AddInterceptors(interceptor);
             });
 
             return services;
