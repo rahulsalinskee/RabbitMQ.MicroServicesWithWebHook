@@ -1,5 +1,5 @@
 using BuildingBlocks.Exceptions.Extensions;
-using BuildingBlocks.Logging.SeriLogConfiguration;
+using BuildingBlocks.Logging.LogFactory;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Product.API.AttackPrevention.CORS;
 using Product.API.AttackPrevention.CSRF;
@@ -18,8 +18,8 @@ using Serilog;
 using ProductServiceVersion1 = Product.API.Repository.ProductServices.Version1;
 using ProductServiceVersion2 = Product.API.Repository.ProductServices.Version2;
 
-// 1. Initialize a basic bootstrap logger to catch startup errors
-Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateBootstrapLogger();
+/* 1. Initialize a basic bootstrap logger to catch startup errors */
+Log.Logger = SharedLogFactory.GenerateSharedLogger(applicationName: "Product.API");
 
 try
 {
@@ -27,8 +27,10 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-    /* 2. Centralized Logging (Replaces the old ProductLog and local UseSerilog) */
-    builder.Host.UseSharedSerilogExtension(applicationName: "Product.API");
+    /* 2. Tell ASP.NET Core to use the global Serilog instance we just configured
+    *  Centralized Logging (Replaces the old ProductLog and local UseSerilog) 
+    */
+    builder.Host.UseSerilog();
 
     /* 3. Centralized Exception Handling - Service Registration */
     builder.Services.AddGlobalExceptionHandlerExtension();
@@ -39,12 +41,13 @@ try
     /* Register Cache */
     builder.Services.ConfigureCacheExtension(configuration: builder.Configuration);
 
-    // Add services to the container.
+    /* Add services to the container. */
     builder.Services.AddControllers();
 
     /* Register Version Services FIRST so OpenAPI can discover the endpoints */
     builder.Services.RegisterApiVersionExtension();
 
+    /* Register Swagger Authorization Extension */
     builder.Services.AddSwaggerGenAuthorizationExtension();
 
     /* Register Rate Limiting Services */
@@ -77,7 +80,7 @@ try
 
     var versionDescriptionProviders = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
-    // Configure the HTTP request pipeline.
+    /* Configure the HTTP request pipeline. */
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();
@@ -99,7 +102,9 @@ try
     app.UseGlobalExceptionHandlerExtension(); 
     
     app.UseHttpsRedirection();
-    app.UseSerilogRequestLogging(); /* Logs HTTP requests automatically */
+
+    /* Logs HTTP requests automatically using your file configuration */
+    app.UseSerilogRequestLogging();
 
     /* --- CORS Middleware START --- */
     /* Must be between UseRouting and UseRateLimiter/UseAuthorization */
@@ -126,5 +131,6 @@ catch (Exception ex)
 }
 finally
 {
-    Log.CloseAndFlush(); // Ensures all logs are written before app exits
+    /* Ensures all logs are written before app exits */
+    Log.CloseAndFlush();
 }
