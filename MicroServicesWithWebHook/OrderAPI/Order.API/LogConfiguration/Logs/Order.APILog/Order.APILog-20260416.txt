@@ -1,0 +1,82 @@
+[2026-04-16 14:43:53.137 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-16 14:43:58.121 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-16 14:43:58.194 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-16 14:43:59.892 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-16 14:43:59.896 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-16 14:43:59.917 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-16 14:44:00.105 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-16 14:44:00.142 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-16 14:44:00.187 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-16 14:58:31.098 +05:30] [INF] [Order.API] HTTP GET /openapi/v1.json responded 404 in 150.0895 ms
+ 
+[2026-04-16 14:58:43.536 +05:30] [INF] [Order.API] HTTP GET /openapi/v1.json responded 404 in 0.9620 ms
+ 
+[2026-04-16 16:54:35.597 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-16 16:54:42.815 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-16 16:54:42.847 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-16 16:54:45.751 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-16 16:54:45.757 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-16 16:54:45.909 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-16 16:54:45.989 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-16 16:54:46.035 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-16 16:54:46.038 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-16 16:55:06.066 +05:30] [INF] [Order.API] HTTP GET /openapi/v1.json responded 404 in 187.5772 ms
+ 
+[2026-04-16 18:01:56.853 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-16 18:02:02.201 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-16 18:02:02.652 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-16 18:02:05.472 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-16 18:02:05.476 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-16 18:02:05.531 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-16 18:02:05.829 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-16 18:02:05.937 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-16 18:02:05.949 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-16 18:34:34.999 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-16 18:34:37.742 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-16 18:34:38.412 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-16 18:34:40.891 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-16 18:34:41.080 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-16 18:34:41.087 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-16 18:34:41.368 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-16 18:34:41.522 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-16 18:34:41.590 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-16 18:36:18.678 +05:30] [INF] [Order.API] Product Created: Shared.Data.DTOs.ProductDTOs.Version1.ProductDto
+ 
+[2026-04-16 18:36:20.711 +05:30] [INF] [Order.API] Successfully synced product Table Fan to local Order Database.
+ 

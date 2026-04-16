@@ -40,6 +40,9 @@ try
     // Add services to the container.
     builder.Services.AddControllers();
 
+    /* Registers the OpenAPI document generator */
+    builder.Services.AddSwaggerGen();
+
     builder.Services.AddSwaggerGenAuthorizationExtension();
 
     builder.Services.AddScoped<IOrderService, OrderImplementation>();
@@ -60,7 +63,7 @@ try
         app.UseSwagger();
         app.UseSwaggerUI(option =>
         {
-            option.SwaggerEndpoint(url: "/openapi/v1.json", name: "Order API V1");
+            option.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "Order API V1");
         });
     }
 
