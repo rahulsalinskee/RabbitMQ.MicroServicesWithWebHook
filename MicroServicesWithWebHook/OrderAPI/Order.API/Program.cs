@@ -83,7 +83,7 @@ try
     app.MapControllers();
 
     /* 5. Centralized Health Checks - Pipeline Middleware  */
-    app.UseHealthChecks("/health");
+    app.MapHealthChecks("/health");
 
     app.Run();
 }

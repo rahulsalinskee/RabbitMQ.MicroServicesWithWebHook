@@ -127,7 +127,7 @@ try
     app.MapControllers();
     
     /* --- Health Checks Middleware START --- */
-    app.UseHealthChecks("/health");
+    app.MapHealthChecks("/health");
     /* --- Health Checks Middleware END --- */
 
     app.Run();

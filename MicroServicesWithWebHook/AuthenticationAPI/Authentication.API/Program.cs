@@ -86,7 +86,7 @@ try
     app.MapControllers();
 
     /* Health Checks */
-    app.UseHealthChecks("/health");
+    app.MapHealthChecks("/health");
 
     app.Run();
 }
