@@ -38,6 +38,9 @@ try
     /* Register ProductDbContext */
     builder.Services.RegisterProductDbContextExtension(configuration: builder.Configuration);
 
+    /* Register Health Checks */
+    builder.Services.AddHealthChecks();
+
     /* Register Cache */
     builder.Services.ConfigureCacheExtension(configuration: builder.Configuration);
 
@@ -98,7 +101,6 @@ try
     }
 
     /* 4. Centralized Exception Handling - Pipeline Middleware */
-    /* Replaces app.UseMiddleware<GlobalExceptionHandler>(); */
     app.UseGlobalExceptionHandlerExtension(); 
     
     app.UseHttpsRedirection();
@@ -123,6 +125,11 @@ try
     app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();
+    
+    /* --- Health Checks Middleware START --- */
+    app.UseHealthChecks("/health");
+    /* --- Health Checks Middleware END --- */
+
     app.Run();
 }
 catch (Exception ex)

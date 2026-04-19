@@ -1,0 +1,46 @@
+[2026-04-19 05:39:20.323 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-19 05:40:26.564 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-19 05:44:33.213 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-19 05:44:54.269 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-19 05:49:32.404 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-19 05:56:51.427 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-19 05:56:55.662 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-19 05:56:55.786 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-19 05:56:57.874 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-19 05:56:57.917 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-19 05:56:58.382 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-19 05:56:58.430 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-19 05:56:58.467 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-19 05:56:58.475 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 
+[2026-04-19 17:40:45.490 +05:30] [INF] [Order.API] Starting Order.API...
+ 
+[2026-04-19 17:40:50.324 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v1, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV1
+ 
+[2026-04-19 17:40:50.584 +05:30] [INF] [Order.API] Configured endpoint product-sync-queue-v2, Consumer: Order.API.RabbitMqConsumer.ProductConsumer.ProductConsumerV2
+ 
+[2026-04-19 17:40:53.013 +05:30] [INF] [Order.API] Now listening on: https://localhost:7022
+ 
+[2026-04-19 17:40:53.138 +05:30] [INF] [Order.API] Now listening on: http://localhost:5007
+ 
+[2026-04-19 17:40:53.360 +05:30] [INF] [Order.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-19 17:40:53.443 +05:30] [INF] [Order.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-19 17:40:53.464 +05:30] [INF] [Order.API] Hosting environment: Development
+ 
+[2026-04-19 17:40:53.466 +05:30] [INF] [Order.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\OrderAPI\Order.API
+ 

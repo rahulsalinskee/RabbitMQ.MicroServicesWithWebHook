@@ -1,5 +1,6 @@
 using API.Gateway.Authentication;
 using API.Gateway.Authorization;
+using API.Gateway.Fallback;
 using BuildingBlocks.Exceptions.Extensions;
 using BuildingBlocks.Logging.LogFactory;
 using Serilog;
@@ -27,8 +28,11 @@ try
     /* Register Authorization */
     builder.Services.RegisterAuthorizationExtensions();
 
+    /* Register YARP with Resilience */
+    builder.Services.RegisterYarpWithResilienceExtension(configuration: builder.Configuration);
+
     /* Add YARP Reverse Proxy Services */
-    builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+    //builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
     // Add services to the container.
     builder.Services.AddControllers();
@@ -46,6 +50,9 @@ try
 
     /* 4. Use Centralized Exception */
     app.UseGlobalExceptionHandlerExtension();
+
+    /* Use Gateway Fallback Middleware */
+    app.UseMiddleware<GatewayFallbackMiddleware>();
 
     app.UseHttpsRedirection();
 

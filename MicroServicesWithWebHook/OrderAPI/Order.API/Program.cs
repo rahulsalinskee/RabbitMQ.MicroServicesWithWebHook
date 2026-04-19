@@ -34,6 +34,9 @@ try
     /* Register OrderDbContext */
     builder.Services.RegisterOrderDbContextExtension(configuration: builder.Configuration);
 
+    /* Register Health Checks */
+    builder.Services.AddHealthChecks();
+
     /* Register Cache */
     builder.Services.ConfigureCacheExtension(configuration: builder.Configuration);
 
@@ -78,6 +81,9 @@ try
     app.UseAuthorization();
 
     app.MapControllers();
+
+    /* 5. Centralized Health Checks - Pipeline Middleware  */
+    app.UseHealthChecks("/health");
 
     app.Run();
 }

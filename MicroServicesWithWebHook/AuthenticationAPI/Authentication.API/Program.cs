@@ -25,6 +25,9 @@ try
 
     builder.Services.RegisterAuthenticationServiceExtension(configuration: builder.Configuration);
 
+    /* 4. Health Checks */
+    builder.Services.AddHealthChecks();
+
     builder.Services.RegisterAuthenticationDbContextExtension(configuration: builder.Configuration);
 
     /* ADD Add Identity */
@@ -81,6 +84,9 @@ try
     app.UseAuthorization();
 
     app.MapControllers();
+
+    /* Health Checks */
+    app.UseHealthChecks("/health");
 
     app.Run();
 }

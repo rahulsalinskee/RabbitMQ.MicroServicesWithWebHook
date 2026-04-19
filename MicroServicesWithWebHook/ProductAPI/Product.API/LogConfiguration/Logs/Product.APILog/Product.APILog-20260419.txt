@@ -1,0 +1,84 @@
+[2026-04-19 05:39:20.372 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-19 05:40:26.585 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-19 05:44:33.177 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-19 05:44:54.187 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-19 05:49:32.100 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-19 05:56:51.377 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-19 05:56:57.687 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-04-19 05:56:57.872 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-04-19 05:56:58.173 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-19 05:56:58.379 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-19 05:56:58.405 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-04-19 05:56:58.425 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-04-19 05:59:22.592 +05:30] [INF] [Product.API] HTTP GET /swagger/v1/swaggera.json responded 404 in 235.5763 ms
+ 
+[2026-04-19 05:59:32.254 +05:30] [INF] [Product.API] HTTP GET /swagger/v1/swaggera.json responded 404 in 1.7409 ms
+ 
+[2026-04-19 17:40:45.522 +05:30] [INF] [Product.API] Starting Product.API...
+ 
+[2026-04-19 17:40:52.644 +05:30] [INF] [Product.API] Now listening on: https://localhost:7279
+ 
+[2026-04-19 17:40:52.931 +05:30] [INF] [Product.API] Bus started: "rabbitmq://localhost/"
+ 
+[2026-04-19 17:40:53.013 +05:30] [INF] [Product.API] Now listening on: http://localhost:5167
+ 
+[2026-04-19 17:40:53.392 +05:30] [INF] [Product.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-19 17:40:53.398 +05:30] [INF] [Product.API] Hosting environment: Development
+ 
+[2026-04-19 17:40:53.403 +05:30] [INF] [Product.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\ProductAPI\Product.API
+ 
+[2026-04-19 17:40:53.889 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 444.6365 ms
+ 
+[2026-04-19 17:41:04.301 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 2.8231 ms
+ 
+[2026-04-19 17:41:18.552 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 5.0832 ms
+ 
+[2026-04-19 17:41:32.710 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.7527 ms
+ 
+[2026-04-19 17:41:45.516 +05:30] [INF] [Product.API] HTTP GET /swagger/v1/swaggera.json responded 404 in 10.1989 ms
+ 
+[2026-04-19 17:41:46.838 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.6890 ms
+ 
+[2026-04-19 17:41:47.477 +05:30] [INF] [Product.API] HTTP GET /swagger/v1/swaggera.json responded 404 in 0.5795 ms
+ 
+[2026-04-19 17:42:00.964 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.6942 ms
+ 
+[2026-04-19 17:42:15.088 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.8319 ms
+ 
+[2026-04-19 17:42:29.232 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.6349 ms
+ 
+[2026-04-19 17:42:43.424 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.6606 ms
+ 
+[2026-04-19 17:42:57.590 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.6377 ms
+ 
+[2026-04-19 17:43:11.713 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.6532 ms
+ 
+[2026-04-19 17:43:25.849 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.5610 ms
+ 
+[2026-04-19 17:43:40.009 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.9293 ms
+ 
+[2026-04-19 17:43:54.140 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 2.5830 ms
+ 
+[2026-04-19 17:44:08.270 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 1.0394 ms
+ 
+[2026-04-19 17:44:22.394 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.6754 ms
+ 
+[2026-04-19 17:44:36.523 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.5611 ms
+ 
+[2026-04-19 17:44:50.643 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.9407 ms
+ 
+[2026-04-19 17:45:04.789 +05:30] [INF] [Product.API] HTTP GET /health responded 200 in 0.9391 ms
+ 

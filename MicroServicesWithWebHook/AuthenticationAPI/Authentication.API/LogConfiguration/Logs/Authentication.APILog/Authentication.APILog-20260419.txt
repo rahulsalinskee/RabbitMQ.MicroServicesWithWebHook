@@ -1,0 +1,20 @@
+[2026-04-19 05:57:02.834 +05:30] [INF] [Authentication.API] Now listening on: https://localhost:7198
+ 
+[2026-04-19 05:57:02.925 +05:30] [INF] [Authentication.API] Now listening on: http://localhost:5129
+ 
+[2026-04-19 05:57:03.399 +05:30] [INF] [Authentication.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-19 05:57:03.401 +05:30] [INF] [Authentication.API] Hosting environment: Development
+ 
+[2026-04-19 05:57:03.403 +05:30] [INF] [Authentication.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\AuthenticationAPI\Authentication.API
+ 
+[2026-04-19 17:40:57.747 +05:30] [INF] [Authentication.API] Now listening on: https://localhost:7198
+ 
+[2026-04-19 17:40:57.826 +05:30] [INF] [Authentication.API] Now listening on: http://localhost:5129
+ 
+[2026-04-19 17:40:58.220 +05:30] [INF] [Authentication.API] Application started. Press Ctrl+C to shut down.
+ 
+[2026-04-19 17:40:58.222 +05:30] [INF] [Authentication.API] Hosting environment: Development
+ 
+[2026-04-19 17:40:58.225 +05:30] [INF] [Authentication.API] Content root path: G:\Code\NET_10\RabbitMQ\MicroServicesWithWebHook\AuthenticationAPI\Authentication.API
+ 
