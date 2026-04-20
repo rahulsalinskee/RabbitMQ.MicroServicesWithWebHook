@@ -26,6 +26,13 @@ namespace EmailNotification.WebHook.RabbitMqConsumer
                     configurator.ReceiveEndpoint(queueName: "email-webhook-queue", configureEndpoint: endpointConfigurator =>
                     {
                         endpointConfigurator.PrefetchCount = 16;
+
+                        /* Adding Retry Policy - If the SMTP server is down, retry 3 times, waiting 5 seconds between each try */
+                        endpointConfigurator.UseMessageRetry(retryConfigurator =>
+                        {
+                            retryConfigurator.Interval(retryCount: 3, interval: TimeSpan.FromSeconds(5));
+                        });
+
                         endpointConfigurator.ConfigureConsumer<WebhookConsumer>(context);
                     });
                 });

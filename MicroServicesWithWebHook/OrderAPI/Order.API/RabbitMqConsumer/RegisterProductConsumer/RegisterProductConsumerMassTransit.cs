@@ -29,6 +29,13 @@ namespace Order.API.RabbitMqConsumer.RegisterProductConsumer
                     configurator.ReceiveEndpoint(queueName: "product-sync-queue-v1", configureEndpoint: endpointConfigurator =>
                     {
                         endpointConfigurator.PrefetchCount = 16;
+
+                        /* Adding Retry Policy - If the Product API is down, retry 3 times, waiting 5 seconds between each try */
+                        endpointConfigurator.UseMessageRetry(retryConfigurator =>
+                        {
+                            retryConfigurator.Interval(retryCount: 3, interval: TimeSpan.FromSeconds(5));
+                        });
+
                         endpointConfigurator.ConfigureConsumer<ProductConsumerV1>(context);
                     });
 
@@ -39,6 +46,13 @@ namespace Order.API.RabbitMqConsumer.RegisterProductConsumer
                     configurator.ReceiveEndpoint(queueName: "product-sync-queue-v2", configureEndpoint: endpointConfigurator =>
                     {
                         endpointConfigurator.PrefetchCount = 16;
+
+                        /* Adding Retry Policy - If the Product API is down, retry 3 times, waiting 5 seconds between each try */
+                        endpointConfigurator.UseMessageRetry(retryConfigurator =>
+                        {
+                            retryConfigurator.Interval(retryCount: 3, interval: TimeSpan.FromSeconds(5));
+                        });
+
                         endpointConfigurator.ConfigureConsumer<ProductConsumerV2>(context);
                     });
                 });

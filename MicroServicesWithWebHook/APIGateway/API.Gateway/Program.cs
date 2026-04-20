@@ -56,6 +56,9 @@ try
 
     app.UseHttpsRedirection();
 
+    /* Logs incoming HTTP requests to your Gateway log file */
+    app.UseSerilogRequestLogging();
+
     /* MUST BE IN THIS ORDER */
     app.UseAuthentication();
     app.UseAuthorization();
